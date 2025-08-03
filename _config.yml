@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: MCP Tool Hosting by ChatterKB
+title: MCP Hosting by ChatterKB
 email: hello@chatterkb.com
 logo: "/assets/images/chatterkb-logo-ex.png"
 description: >- # this means to ignore newlines until "baseurl:"
