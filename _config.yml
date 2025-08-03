@@ -90,11 +90,3 @@ permalink: pretty
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-collections:
-  workflow_library:
-    output: true
-    permalink: /workflow-library/:name/
-  mcp_servers:
-    output: true
-    permalink: /mcp-servers/:name/
