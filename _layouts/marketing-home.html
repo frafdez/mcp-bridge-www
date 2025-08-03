@@ -10,12 +10,40 @@ layout: marketing-template/default
 {% include marketing-template/sections/problems.html %}
 {% endif %}
 
+{% if page.how_it_works %}
+{% include marketing-template/sections/how-it-works.html %}   
+{% endif %}
+
+{% if page.tech_compatibility %}
+{% include marketing-template/sections/tech-compatibility.html %}
+{% endif %}
+
 {% if page.solution %}
 {% include marketing-template/sections/solution.html %}
 {% endif %}
 
 {% if page.features %}
-{% include marketing-template/sections/features.html %}
+{% include marketing-feature/sections/features.html %}
+{% endif %}
+
+{% if page.use_cases %}
+{% include marketing-template/sections/use-cases.html %}
+{% endif %}
+
+{% if page.pricing %}
+{% include marketing-template/sections/pricing.html %}
+{% endif %}
+
+{% if page.onboarding %}
+{% include marketing-template/sections/onboarding.html %}
+{% endif %}
+
+{% if page.self_service %}
+{% include marketing-template/sections/self-service.html %}
+{% endif %}
+
+{% if page.faq %}
+{% include marketing-template/sections/faq.html %}
 {% endif %}
 
 {% if page.enterprise %}

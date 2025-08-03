@@ -7,10 +7,10 @@ description: "Transform local STDIO-based MCP tools into scalable HTTP APIs. Bui
 
 # Page content
 hero:
-  title: "Turn Local MCP Tools into Cloud APIs in Minutes"
+  title: "Host Your Local MCP Tools in the Cloud"
   split_title:
-    main: "Turn Local MCP Tools into Cloud APIs in"
-    highlight: "Minutes."
+    main: "Host Your Local MCP Tools in the Cloud"
+    highlight: "Effortlessly."
   description: "Deploy your STDIO-based MCP tools to a dedicated cloud instance with a secure HTTP interface. No code changes required. Built for AI developers and agent workflows."
   image: "/assets/images/marketing/mcp-hero.png"
   primary_button:
@@ -18,7 +18,7 @@ hero:
     url: "mailto:hello@chatterkb.com?subject=MCP%20Hosting%20Inquiry"
   secondary_button:
     text: "Book 15-Min Demo"
-    url: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0oYQ10osj27ugUfwOrSoV893uJ-kWPhIKNBhII5bTlwc3j6HdkEunH29TciGeOttFjfxqEn92O"
+    url: "https://calendar.app.google/JJRTkNDZ6fZ5tLicA"
 
 problems:
   section_title: "Unlock Your MCP Tools from Desktop Limitations"
@@ -31,113 +31,143 @@ problems:
       description: | 
         Why build complex infrastructure when you need to scale? Our HTTP bridge layer turns your single-process STDIO tools into scalable APIs that handle concurrent requests, support multiple teams, and integrate seamlessly with agent workflows. Focus on your tools, not your infrastructure.
 
-solution:
-  title: "From Knowledge to Action in One Move"
-  description: "ChatterKB combines AI for business with workflow automation powered by everything your organization already knows."
-  image: "/assets/images/marketing/workflow-diagram.webp"
-  steps:
-    - title: "Capture Knowledge"
-      description: "Connect your tools and ChatterKB's AI knowledge base automatically collects insights from meetings, documents, and communications."
-      image: "/assets/images/marketing/workflow-step1.webp"
-      badges:
-        - "Slack"
-        - "Google Drive"
-        - "Notion" 
-        - "YouTube"
-        - "Zapier"
-        - "And more..."
-    - title: "Process & Organize"
-      description: "Our enterprise AI structures information into actionable formats, categorizing insights and identifying patterns."
-      image: "/assets/images/marketing/workflow-step2.webp"
-      badges:
-        - "Categorize"
-        - "Summarize"
-        - "Connect"
-    - title: "Generate Results"
-      description: "Transform business intelligence into automated workflows, reports, and campaigns with a single click."
-      image: "/assets/images/marketing/workflow-step3.webp"
-      badges:
-        - "Reports"
-        - "Workflows"
-        - "Zapier MCP"
+# Features Section
+_features:
+  tagline: "CODE • DEPLOY • FORGET"
+  title: "Hassle-Free MCP Hosting"
+  items:
+    - icon: "bi-cloud-fill"
+      title: "Zero Infrastructure Hassles"
+      description: "Dedicated server, static IP, HTTPS - all setup and managed for you. Focus on your tools, not your server."
+      image: "/assets/images/marketing/index-step-1.png"
+    - icon: "bi-tools"
+      title: "Run Multiple Tools Together"
+      description: "Host as many MCP tools as you need on one instance. Perfect for building complex AI workflows."
+    - icon: "bi-shield-lock-fill"
+      title: "Simple Security"
+      description: "One bearer token to access everything. No OAuth complexity, no API key rotation headaches."
+    - icon: "bi-code-slash"
+      title: "Works Like Your Local Setup"
+      description: "Same MCP protocol you already know, but accessible anywhere. Streaming responses work perfectly too."
+
 
 features:
-  tagline: "DISCOVER • AUTOMATE • SCALE"
-  title: "Work Smarter, Not Harder"
+  section_title: "CODE • DEPLOY • FORGET"
+  title: "Hassle-Free MCP Hosting"
   items:
-    - icon: "bi-pin-angle-fill"
-      title: "Pin Insights, Instantly Create Reports"
-      description: "Mark key moments during chats and turn them into business-ready reports with no formatting needed. AI for business that actually saves time."
-      image: "/assets/images/marketing/feature-pin.webp"
-    - icon: "bi-file-earmark-text"
-      title: "Get the Gold Without Reading the Docs"
-      description: "Drop in a 50-page strategy PDF and get key messages, audience insights, and action items in seconds. AI knowledge base that eliminates guesswork."
-      image: "/assets/images/marketing/feature-docs.webp"
-      url: "/features/chat-assistant-document-analysis"
-    - icon: "bi-kanban"
-      title: "Build Processes That Run Themselves"
-      description: "Turn your organization's best practices into workflow automation that guides your team step by step - without management overhead."
-      image: "/assets/images/marketing/feature-sop.webp"
-      url: "/features/workflows"
-    - icon: "bi-people"
-      title: "Keep the Intelligence, Even When People Leave"
-      description: "Capture your team's expertise in your AI knowledge base and make it usable forever. When someone leaves, their knowledge stays - and your systems keep improving."
-      image: "/assets/images/marketing/feature-team.webp"
-      url: "/features/knowledge-base"
+    - side: left
+      title: Run Multiple Tools Together
+      description: Host as many MCP tools as you need on one instance. Perfect for building complex AI workflows.
+      image: /assets/images/marketing/index-step-1.png
+      bullets:
+        - Combines all your MCP servers into one streamable HTTP endpoint
+        - Aggregates all your tools into one server
+        - Easy tool calling: each server is scoped using servername.tool
+    - side: right
+      title: Works Like Your Local Setup
+      description: Same MCP protocol you already know, but accessible anywhere. Streaming responses work perfectly too.
+      image: /assets/images/marketing/index-step-2.png
+      bullets:
+        - Use the same MCP servers you would with your desktop apps like Claude Desktop, Cursor, VSCode, and ChatGPT
+        - Copy and paste your servers into the servers list with your client tokens
+        - Securely stored on your dedicated AWS EC2 instance
+    - side: left
+      title: Detailed Logging
+      description: Unified logging for each MCP server
+      image: /assets/images/marketing/index-step-3.png
+      bullets:
+        - Track down errors with your MCP servers
+        - Keep track of when each tool is called
+    - side: right
+      title: Hassle-Free Authentication
+      description: Keep your servers secure using Bearer authentication
+      code: |
+        curl -X POST "https://your-server.chatterkb.com" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+          -d '{
+            "jsonrpc": "2.0",
+            "id": "1",
+            "method": "tools/list",
+            "params": {}
+          }'
 
-enterprise:
-  title: "AI for Enterprise: Security Without the Enterprise Headaches"
-  description: "Deploy our AI for enterprise on your infrastructure with complete data sovereignty, regulatory compliance, and zero-trust security architecture."
+          # Or, less secure but effective in a trusted environment:
+          https://your-server.chatterkb.com/YOUR_TOKEN_HERE
 
-branded_content:
-  title: "Turn Your Business Into a Thought Leader"
-  description: "Create branded, public knowledge bases that showcase your expertise while attracting premium clients. Position your organization as the go-to authority in your space with enterprise AI solutions."
-  image: "/assets/images/marketing/custom-branding.webp"
-  features:
-    - title: "Business Branding"
-      description: "Add your logo, colors, and custom CSS for complete brand control"
-    - title: "Client Attraction"
-      description: "Showcase expertise through valuable, accessible knowledge"
-    - title: "Thought Leadership"
-      description: "Position your business as the expert authority in your field"
-    - title: "Client Self-Service"
-      description: "Reduce support load with intelligent, branded resource centers powered by AI for business"
+      bullets:
+        - Developer-friendly token authentication
+        - Support for inline URL authentication
+        - Tokens can be reset at any time
 
-roi:
-  title: "The ROI of Getting This Right"
-  benefits:
-    - icon: "bi-clock"
-      title: "Save Time"
-      description: "10+ hours per week per knowledge worker - reclaimed from reporting, searching, and re-explaining the same things."
-    - icon: "bi-graph-up-arrow"
-      title: "Grow Smarter"
-      description: "Faster onboarding, repeatable results, and cleaner handoffs. Your workflow automation systems grow with your organization."
-    - icon: "bi-robot"
-      title: "Automate the Grind"
-      description: "Transform repetitive tasks into automated workflows. Free up your best people to actually think and lead."
+# Pricing Section
+pricing:
+  title: "Straightforward Pricing"
+  description: "No hidden fees, no surprises. Just predictable pricing that grows with your usage."
+  tiers:
+    - name: "Starter"
+      price: "$39"
+      period: "/mo"
+      description: "For tinkerers and side projects"
+      features:
+        - "Dedicated t2.small instance"
+        - "8GB storage for tool data"
+        - "30,000 tool calls per month"
+        - "Static IP and HTTPS encryption"
+        - "Bearer token authentication"
+        - "Email support"
+      button_text: "Contact Us"
+      button_url: "mailto:hello@chatterkb.com?subject=MCP%20Hosting%20Starter%20Plan%20Inquiry"
+    - name: "Pro"
+      price: "$89"
+      period: "/mo"
+      description: "For serious builders and small teams"
+      popular: true
+      features:
+        - "Dedicated t2.medium instance"
+        - "8GB storage for tool data"
+        - "100,000 tool calls per month"
+        - "Static IP and HTTPS encryption"
+        - "Bearer token authentication"
+        - "Priority email support"
+        - "Integration guidance"
+      button_text: "Contact Us"
+      button_url: "mailto:hello@chatterkb.com?subject=MCP%20Hosting%20Pro%20Plan%20Inquiry"
+    - name: "Scale"
+      price: "$159"
+      period: "/mo"
+      description: "For production use cases and growth"
+      features:
+        - "Dedicated t2.large instance"
+        - "8GB storage for tool data"
+        - "250,000 tool calls per month"
+        - "Static IP and HTTPS encryption"
+        - "Bearer token authentication"
+        - "IP restrictions (optional)"
+        - "Priority email support"
+        - "Custom integration support"
+      button_text: "Contact Us"
+      button_url: "mailto:hello@chatterkb.com?subject=MCP%20Hosting%20Scale%20Plan%20Inquiry"
+  notes: "All plans include a dedicated server instance and premium support. Need a custom plan? Contact us for enterprise options."
 
+
+# Self-Service Coming Soon
+self_service:
+  title: "Self-Service Portal Coming Soon"
+  form_title: "Join the Waitlist"
+  description: "For DIY types, we're building a console where you can deploy and manage your MCP tools without waiting for manual setup."
+  note: "Be the first to know when our self-service platform launches. No spam, just important updates."
+
+
+# CTA Section
 cta:
-  title: "Let's Build Your Business Intelligence Engine"
-  description: "See how ChatterKB's AI knowledge base and workflow automation can elevate your team and transform your operations."
-  image: "/assets/images/marketing/product-screenshot.png"
+  title: "Ready for Production-Grade MCP Hosting?"
+  description: "Turn your local tools into scalable APIs. We handle the servers, security, and setup so you can focus on building."
+  image: "/assets/images/marketing/mcp-hero.png"
   primary_button:
-    text: "Try It Free"
-    url: "https://app.chatterkb.com/auth/signup"
+    text: "Contact Us"
+    url: "mailto:hello@chatterkb.com?subject=MCP%20Hosting%20Inquiry"
   secondary_button:
-    text: "Book 15-Min Call"
-    url: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0oYQ10osj27ugUfwOrSoV893uJ-kWPhIKNBhII5bTlwc3j6HdkEunH29TciGeOttFjfxqEn92O"
-
-_trusted:
-  text: "Trusted by fast-moving agencies that actually ship work"
-  logos:
-    - name: "Agency 1"
-      image: "/assets/images/marketing/agency1-logo.webp"
-    - name: "Agency 2"
-      image: "/assets/images/marketing/agency2-logo.webp"
-    - name: "Agency 3"
-      image: "/assets/images/marketing/agency3-logo.webp"
-    - name: "Agency 4"
-      image: "/assets/images/marketing/agency4-logo.webp"
-    - name: "Agency 5"
-      image: "/assets/images/marketing/agency5-logo.webp"
---- 
+    text: "Book 15-Min Demo"
+    url: "https://calendar.app.google/JJRTkNDZ6fZ5tLicA"
+---

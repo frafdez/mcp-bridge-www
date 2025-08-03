@@ -1,0 +1,41 @@
+<section class="use-cases py-5 py-md-7 bg-light">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-5 pb-3">
+      <h2 class="display-5 fw-bold mb-4">{{ page.use_cases.title }}</h2>
+      <p class="lead opacity-75 mx-auto" style="max-width: 700px;">{{ page.use_cases.description }}</p>
+    </div>
+    
+    <!-- Use Cases Grid -->
+    <div class="row g-4">
+      {% for case in page.use_cases.cases %}
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body p-4 p-lg-5">
+              <div class="d-flex align-items-center mb-4">
+                <div class="icon-circle me-3 d-flex align-items-center justify-content-center">
+                  <i class="{{ case.icon }} fs-4"></i>
+                </div>
+                <h3 class="fs-4 fw-semibold mb-0">{{ case.title }}</h3>
+              </div>
+              <blockquote class="blockquote mb-0 fst-italic">
+                <p class="mb-0">{{ case.description }}</p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--bs-primary);
+    color: white;
+    flex-shrink: 0;
+  }
+</style>

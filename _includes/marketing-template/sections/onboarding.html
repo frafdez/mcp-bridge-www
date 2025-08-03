@@ -1,0 +1,44 @@
+<section class="onboarding py-5 py-md-7 bg-light">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-5 pb-3">
+      <h2 class="display-5 fw-bold mb-4">{{ page.onboarding.title }}</h2>
+      <p class="lead opacity-75 mx-auto" style="max-width: 700px;">{{ page.onboarding.description }}</p>
+    </div>
+    
+    <!-- Onboarding Steps -->
+    <div class="row justify-content-center mb-5">
+      {% for step in page.onboarding.steps %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body p-4 p-lg-5 text-center">
+              <div class="step-number mx-auto bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mb-4">
+                {{ forloop.index }}
+              </div>
+              <h3 class="fs-4 fw-semibold mb-3">{{ step.title }}</h3>
+              <p class="mb-0">{{ step.description }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <!-- CTA Button -->
+    {% if page.onboarding.cta %}
+      <div class="text-center mt-5">
+        <a href="{{ page.onboarding.cta.url }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+          {{ page.onboarding.cta.text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>

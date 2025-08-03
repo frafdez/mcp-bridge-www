@@ -1,0 +1,49 @@
+<section class="faq py-5 py-md-7">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-5 pb-3">
+      <h2 class="display-5 fw-bold mb-4">{{ page.faq.title }}</h2>
+    </div>
+    
+    <!-- FAQ Accordion -->
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="accordion" id="faqAccordion">
+          {% for item in page.faq.questions %}
+            <div class="accordion-item border-0 mb-4 rounded-4 shadow-sm">
+              <h3 class="accordion-header">
+                <button class="accordion-button rounded-4 {% unless forloop.first %}collapsed{% endunless %}" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#faq{{ forloop.index }}" 
+                        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" 
+                        aria-controls="faq{{ forloop.index }}">
+                  {{ item.question }}
+                </button>
+              </h3>
+              <div id="faq{{ forloop.index }}" 
+                   class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
+                   data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  {{ item.answer }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .accordion-button:not(.collapsed) {
+    background-color: var(--bs-primary);
+    color: white;
+  }
+  
+  .accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+  }
+</style>

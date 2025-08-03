@@ -1,0 +1,65 @@
+<section class="pricing py-5 py-md-7 mt-5 mt-md-7">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-5 pb-3">
+      <div class="badge bg-primary text-white mb-3 py-2 px-4 rounded-pill fw-normal">PRICING</div>
+      <h2 class="display-5 fw-bold">{{ page.pricing.title }}</h2>
+      <p class="lead opacity-75 mx-auto" style="max-width: 700px;">{{ page.pricing.description }}</p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="row g-4 justify-content-center">
+      {% for tier in page.pricing.tiers %}
+        <div class="col-md-4 d-flex">
+          <div class="card border-0 shadow-lg rounded-4 w-100 d-flex flex-column {% if tier.popular %}position-relative border border-primary{% endif %}" 
+               style="{% if tier.popular %}z-index: 1;{% endif %}">
+            
+            {% if tier.popular %}
+              <div class="text-center mt-n3 mb-2">
+                <span class="badge bg-primary px-3 py-2 rounded-pill fw-semibold">
+                  Most Popular
+                </span>
+              </div>
+            {% else %}
+              <div class="mt-4 mb-2"></div> <!-- Spacer to align headers -->
+            {% endif %}
+            
+            <div class="card-body p-4 p-lg-5 d-flex flex-column">
+              <!-- Price Header -->
+              <h3 class="fw-bold mb-0">{{ tier.name }}</h3>
+              <p class="text-muted">{{ tier.description }}</p>
+              <div class="mb-4">
+                <span class="display-4 fw-bold">{{ tier.price }}</span>
+                <span class="text-muted">{{ tier.period }}</span>
+              </div>
+              
+              <!-- Features List -->
+              <ul class="list-unstyled mb-4 flex-grow-1">
+                {% for feature in tier.features %}
+                  <li class="d-flex align-items-center mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                    <span>{{ feature }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+              
+              <!-- Call to Action -->
+              <div class="mt-auto">
+                <a href="{{ tier.button_url }}" class="btn {% if tier.popular %}btn-primary{% else %}btn-outline-primary{% endif %} w-100 py-3">
+                  {{ tier.button_text }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Additional Notes (Optional) -->
+    {% if page.pricing.notes %}
+      <div class="mt-5 text-center">
+        <p class="text-muted small">{{ page.pricing.notes }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>

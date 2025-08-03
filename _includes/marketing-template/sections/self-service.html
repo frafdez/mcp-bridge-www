@@ -1,0 +1,28 @@
+<section class="self-service py-5 py-md-7" style="background-color: var(--bs-primary); background-image: linear-gradient(135deg, #9200ff, #6d00ff); color: white;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-7 text-center">
+        <!-- Section header -->
+        <div class="badge bg-white text-primary mb-3 py-2 px-4 rounded-pill fw-normal">COMING SOON</div>
+        <h2 class="display-5 fw-bold mb-4 text-white">{{ page.self_service.title }}</h2>
+        <p class="lead opacity-75 mb-5 text-white">{{ page.self_service.description }}</p>
+        
+        <!-- MailerLite form container -->
+        <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+          <div class="card-body">
+            <h3 class="fs-4 fw-bold mb-4">{{ page.self_service.form_title }}</h3>
+            
+            <!-- Form placeholder that will be replaced by MailerLite script -->
+            <div id="ml-form-container" class="mailerlite-form-container">
+              {% include mailerlite-form.html %}
+            </div>
+            
+            {% if page.self_service.note %}
+              <p class="text-muted small mt-4 mb-0">{{ page.self_service.note }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

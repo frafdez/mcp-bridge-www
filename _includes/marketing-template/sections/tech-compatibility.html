@@ -1,0 +1,55 @@
+<section class="tech-compatibility py-5 py-md-7">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-5 pb-3">
+      <h2 class="display-5 fw-bold mb-4">{{ page.tech_compatibility.title }}</h2>
+      <p class="lead opacity-75 mx-auto" style="max-width: 700px;">{{ page.tech_compatibility.description }}</p>
+    </div>
+
+    <!-- Integrations -->
+    <div class="row mb-5 g-4 justify-content-center">
+      {% for integration in page.tech_compatibility.integrations %}
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+            <div class="card-body text-center">
+              {% if integration.image %}
+                <div class="mb-4">
+                  <img src="{{ integration.image }}" alt="{{ integration.name }}" class="img-fluid integration-logo" style="max-height: 60px;">
+                </div>
+              {% endif %}
+              <h3 class="fs-5 fw-semibold mb-3">{{ integration.name }}</h3>
+              <p class="mb-0">{{ integration.description }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Features -->
+    <div class="row mt-5 g-4">
+      {% for feature_group in page.tech_compatibility.features %}
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+            <div class="card-body">
+              <h3 class="fs-5 fw-semibold mb-4">{{ feature_group.title }}</h3>
+              <ul class="feature-list ps-0 ms-0">
+                {% for item in feature_group.items %}
+                  <li class="d-flex align-items-center mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                    <span>{{ item }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-list {
+    list-style: none;
+  }
+</style>
