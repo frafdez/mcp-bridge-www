@@ -2,8 +2,8 @@
 layout: marketing-home
 
 # SEO and metadata
-title: "Deploy STDIO MCP Servers to the Cloud | Instant API Access | ChatterKB"
-description: "Transform local STDIO-based MCP tools into scalable HTTP APIs. Built for AI developers, agent creators, and LLM workflows."
+title: "Host Your Local MCP Tools in the Cloud | ChatterKB"
+description: "Transform local STDIO-based MCP tools into Streamable HTTP endpoints with token authorization. Built for AI developers, agent creators, and LLM workflows."
 
 # Page content
 hero:
