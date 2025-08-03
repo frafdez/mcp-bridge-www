@@ -1,0 +1,44 @@
+<section class="mt_cta py-5 py-md-7 position-relative overflow-hidden">
+  <div class="mt_cta_gradient" style="opacity: 0.1;"></div>
+  <div class="mt_cta_blur position-absolute end-0 bottom-0 d-none d-md-block" style="transform: translate(50%, 50%); opacity: 0.1;"></div>
+  <div class="mt_cta_blur position-absolute start-0 top-0 d-none d-md-block" style="transform: translate(-50%, -50%); opacity: 0.1;"></div>
+  
+  <div class="container position-relative">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card border-0 rounded-4 shadow-lg" style="box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;">
+          <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-7">
+                <h2 class="display-5 fw-bold mb-4">{{ page.cta.title }}</h2>
+                <p class="lead mb-5">{{ page.cta.description }}</p>
+                <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+                  {% if page.cta.primary_button %}
+                  <a href="{{ page.cta.primary_button.url }}" class="btn mt_gradient_button btn-lg px-5 py-3 rounded-3">{{ page.cta.primary_button.text }}</a>
+                  {% endif %}
+                  {% if page.cta.secondary_button %}
+                  <a href="{{ page.cta.secondary_button.url }}" class="btn btn-outline-secondary btn-lg px-5 py-3 rounded-3"><i class="bi bi-calendar-event me-2"></i>{{ page.cta.secondary_button.text }}</a>
+                  {% endif %}
+                </div>
+                <div class="mt-2 small text-secondary">No credit card required. 14-day free trial.</div>
+              </div>
+              <div class="col-lg-5 d-none d-lg-block">
+                <div class="rounded-4 overflow-hidden shadow-sm">
+                  {% if page.cta.image %}
+                    <img src="{{ page.cta.image }}" alt="ChatterKB Product" class="img-fluid w-100" style="min-height: 320px; object-fit: cover;">
+                  {% else %}
+                    <div class="bg-secondary bg-opacity-10 w-100 h-100 d-flex align-items-center justify-content-center" style="min-height: 320px;">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-secondary opacity-50">
+                        <path d="M4 16L8.58579 11.4142C9.36684 10.6332 10.6332 10.6332 11.4142 11.4142L16 16M14 14L15.5858 12.4142C16.3668 11.6332 17.6332 11.6332 18.4142 12.4142L20 14M14 8H14.01M6 20H18C19.1046 20 20 19.1046 20 18V6C20 4.89543 19.1046 4 18 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

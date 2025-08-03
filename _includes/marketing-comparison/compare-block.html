@@ -1,0 +1,27 @@
+{% comment %}
+Parameters expected:
+- title: section heading
+- cb_icon: chatterkb icon path
+- comp_icon: competitor icon path
+- comp_name: competitor name
+- cb_text: HTML/text for ChatterKB column
+- comp_text: HTML/text for competitor column
+- bg: optional background class
+{% endcomment %}
+<section class="py-7 py-md-9 {{ include.bg }}">
+  <div class="container">
+    {% if include.title %}
+      <h2 class="fw-bold text-center mb-6">{{ include.title }}</h2>
+    {% endif %}
+    <div class="row row-cols-1 row-cols-md-2 g-5 align-items-start">
+      <div class="col">
+        <h4 class="fw-semibold mb-3"><img src="{{ include.cb_icon }}" alt="ChatterKB icon" width="32" class="me-2 align-middle"> ChatterKB</h4>
+        <div class="lh-lg">{{ include.cb_text | markdownify }}</div>
+      </div>
+      <div class="col">
+        <h4 class="fw-semibold mb-3"><img src="{{ include.comp_icon }}" alt="{{ include.comp_name }} icon" width="32" class="me-2 align-middle"> {{ include.comp_name }}</h4>
+        <div class="lh-lg">{{ include.comp_text | markdownify }}</div>
+      </div>
+    </div>
+  </div>
+</section> 

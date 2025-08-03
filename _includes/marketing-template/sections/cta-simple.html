@@ -1,0 +1,31 @@
+<section class="mt_cta px-0 py-5 py-md-7 position-relative overflow-hidden">
+  <div class="mt_cta_gradient" style="opacity: 0.1;"></div>
+  <div class="mt_cta_blur position-absolute end-0 bottom-0 d-none d-md-block" style="transform: translate(50%, 50%); opacity: 0.1;"></div>
+  <div class="mt_cta_blur position-absolute start-0 top-0 d-none d-md-block" style="transform: translate(-50%, -50%); opacity: 0.1;"></div>
+  
+  <div class="container position-relative">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card border-0 rounded-4 shadow-lg" style="box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;">
+          <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-12">
+                <h2 class="display-5 fw-bold mb-4">{{ page.cta.title }}</h2>
+                <p class="lead mb-5">{{ page.cta.description }}</p>
+                <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+                  {% if page.cta.primary_button %}
+                  <a href="{{ page.cta.primary_button.url }}" class="btn mt_gradient_button btn-lg px-5 py-3 rounded-3">{{ page.cta.primary_button.text }}</a>
+                  {% endif %}
+                  {% if page.cta.secondary_button %}
+                  <a href="{{ page.cta.secondary_button.url }}" class="btn btn-outline-secondary btn-lg px-5 py-3 rounded-3"><i class="bi bi-calendar-event me-2"></i>{{ page.cta.secondary_button.text }}</a>
+                  {% endif %}
+                </div>
+                <div class="mt-2 small text-secondary">No credit card required. 14-day free trial.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

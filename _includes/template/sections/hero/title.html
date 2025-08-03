@@ -1,0 +1,36 @@
+{% if page.hero %}
+<section class="container py-lg-8 py-5" data-cue="fadeIn">
+    <div class="row justify-content-center">
+       <div class="col-xl-8 col-lg-10 col-12" data-cues="zoomIn" data-group="page-title" data-delay="700" data-disabled="true">
+          <div class="text-center d-flex flex-column gap-5" data-cue="zoomIn" data-group="page-title" data-delay="700" style="animation-name: zoomIn; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 700ms; animation-direction: normal; animation-fill-mode: both;">
+            {% if page.hero.offer %}
+            <div class="d-flex justify-content-center">
+               <a href="{{ page.hero.offer.url }}" class="text-decoration-none">
+                 <span class="bg-primary bg-opacity-10 text-primary border-primary border p-2 fs-6 rounded-pill lh-1 d-flex align-items-center">
+                  <span class="ms-2 pe-1"><i class="bi bi-fire text-warning"></i> {{ page.hero.offer.text }}</span>
+                  </span>
+               </a>
+            </div>
+            {% endif %}
+             <div class="d-flex flex-column gap-3 mx-lg-8">
+                <h1 class="mb-0 display-4">{{ page.hero.title }}</h1>
+                <p class="mb-0 lead">{{ page.hero.description }}</p>
+             </div>
+             {% if page.hero.button %}
+             <div class="d-flex flex-row gap-4 justify-content-center">
+                <a href="{{ page.hero.button.url | default: site.signup_url }}" class="btn btn-primary">{{ page.hero.button.text }}</a>
+                {% if page.hero.link %}
+                <a href="{{ page.hero.link.url }}" class="icon-link icon-link-hover">
+                   <div class="d-flex align-items-center">
+                      <span>{{ page.hero.link.text }}</span>
+                      <i class="ms-1 ps-1 bi bi-arrow-right"></i>
+                   </div>
+                </a>
+                {% endif %}
+             </div>
+             {% endif %}
+          </div>
+       </div>
+    </div>
+</section>
+{% endif %}

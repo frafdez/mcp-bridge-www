@@ -1,0 +1,87 @@
+<header class="marketing-header" role="banner">
+  <nav class="navbar navbar-expand-lg py-3">
+    <div class="container d-flex justify-content-between">
+      {%- assign default_paths = site.pages | map: "path" -%}
+      {%- assign page_paths = site.header_pages -%}
+      <!-- Logo on the left -->
+      <a class="navbar-brand d-flex align-items-center" href="{{ "/" | relative_url }}">
+        <strong class="me-2">MCP Hosting</strong> <span style="color: darkgray;" class="me-2">by</span>  
+        <img src="{{ '/assets/images/chatterkb-logo-ex.png' | relative_url }}" alt="ChatterKB Logo" class="logo-image" width="32" height="32">
+        <span class="logo-text">Chatter<span style="color: darkgray;">KB</span></span>
+      </a>
+      
+      <!-- Mobile controls grouped on the right -->
+      <div class="d-flex align-items-center">
+        <!-- Mobile-only Try It Free button -->
+        <a href="{{ site.get_started_url | default: 'https://app.chatterkb.com/auth/signup' }}" class="btn btn-sm mt_gradient_button px-3 py-1 rounded-3 me-2 d-lg-none">
+          Try Free
+        </a>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          {%- if page_paths -%}
+            {%- for path in page_paths -%}
+              {%- assign my_page = site.pages | where: "path", path | first -%}
+              {%- if my_page.title and my_page.show_in_nav != false -%}
+                <li class="nav-item">
+                  <a class="nav-link px-3 {%- if page.url == my_page.url %} active fw-semibold {%- endif -%}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          <li class="nav-item">
+            <button id="theme-toggle" class="nav-link bg-transparent border-0 px-3">
+              <i id="theme-icon" class="bi bi-circle-half"></i>
+              <span class="d-lg-none ms-2">Toggle Theme</span>
+            </button>
+          </li>
+          <li class="nav-item ms-2 d-none d-lg-block">
+            <a href="mailto:hello@chatterkb.com?subject=MCP%20Hosting%20Inquiry" class="btn mt_gradient_button px-4 py-2 rounded-3">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Remove the additional script in header to prevent conflicts -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Use the smallest sticky element, not a wrapper
+    const header = document.querySelector('.navbar'); // or .navbar.navbar-expand-lg
+    const body = document.body;
+
+    function handleStickyState() {
+      if (header.classList.contains('sticky-header')) {
+        if (!body.classList.contains('has-sticky-header')) {
+          body.classList.add('has-sticky-header');
+          // Clamp to a max reasonable value
+          body.style.paddingTop = Math.min(header.offsetHeight, 120) + 'px';
+        }
+      } else {
+        body.classList.remove('has-sticky-header');
+        body.style.paddingTop = '0';
+      }
+    }
+
+    if (header) {
+      handleStickyState();
+      window.addEventListener('scroll', handleStickyState);
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'class') {
+            handleStickyState();
+          }
+        });
+      });
+      observer.observe(header, { attributes: true });
+    }
+  });
+</script> 

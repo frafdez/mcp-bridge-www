@@ -1,0 +1,66 @@
+<section class="mt_problems py-md-7" style="padding-top: 7rem; padding-bottom: 7rem;">
+  <div class="container">
+    <div class="text-center mb-5 pb-3">
+      <h2 class="display-5 fw-bold mb-4">{{ page.problems.section_title }}</h2>
+    </div>
+
+    <div class="row g-5 mt-3">
+      {% for problem in page.problems.items %}
+      <div class="col-md-4">
+        <div class="mt_problem_card mt_hover_lift card h-100 shadow-sm rounded-4" style="padding: 2rem;">
+          <div class="card-body">
+            {% assign icon_type = "document" %}
+            
+            {% case forloop.index %}
+              {% when 2 %}
+                {% assign icon_type = "chart" %}
+              {% when 3 %}
+                {% assign icon_type = "people" %}
+            {% endcase %}
+            
+            <div class="mb-4">
+              <div class="mt_problem_icon_container {{ icon_type }}">
+                {% if icon_type == "document" %}
+                  <i class="bi bi-file-text fs-3 mt_problem_icon"></i>
+                {% elsif icon_type == "chart" %}
+                  <i class="bi bi-bar-chart fs-3 mt_problem_icon"></i>
+                {% elsif icon_type == "people" %}
+                  <i class="bi bi-people fs-3 mt_problem_icon"></i>
+                {% endif %}
+              </div>
+            </div>
+            
+            <h3 class="fs-4 fw-semibold mb-3">{{ problem.title }}</h3>
+            <p>{{ problem.description }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+  }
+
+  [data-bs-theme="dark"] .hover-lift:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+  }
+  
+  /* Custom card styling */
+  .mt_problem_card {
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  
+  [data-bs-theme="dark"] .mt_problem_card {
+    background-color: var(--bs-tertiary-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+</style> 

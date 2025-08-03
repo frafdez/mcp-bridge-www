@@ -1,0 +1,69 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  {%- seo -%}
+  
+  <!-- Additional canonical URL enforcement -->
+  <script>
+    // Clean up URL parameters and fragments that shouldn't be indexed
+    (function() {
+      var url = window.location;
+      var cleanUrl = url.protocol + '//' + url.host + url.pathname;
+      var needsRedirect = false;
+      
+      // Force HTTPS
+      if (url.protocol === 'http:') {
+        cleanUrl = 'https://' + url.host + url.pathname;
+        needsRedirect = true;
+      }
+      
+      // Remove tracking parameters
+      var trackingParams = ['utm_source', 'utm_medium', 'utm_campaign', 'ref', 'from'];
+      var urlParams = new URLSearchParams(url.search);
+      var hasTrackingParams = false;
+      
+      trackingParams.forEach(function(param) {
+        if (urlParams.has(param)) {
+          hasTrackingParams = true;
+        }
+      });
+      
+      // Remove fragment identifiers like #!
+      if (url.hash === '#!') {
+        needsRedirect = true;
+      }
+      
+      // Redirect if needed (but only if not already on the clean URL)
+      if ((needsRedirect || hasTrackingParams) && url.href !== cleanUrl) {
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    })();
+  </script>
+
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon/favicon-96x96.png' | relative_url }}" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon/favicon.svg' | relative_url }}" />
+  <link rel="shortcut icon" href="{{ '/assets/images/favicon/favicon.ico' | relative_url }}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/favicon/apple-touch-icon.png' | relative_url }}" />
+  <meta name="apple-mobile-web-app-title" content="ChatterKB" />
+
+  <!-- Preconnect to Google Fonts to speed up font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Asynchronously load site stylesheets to avoid render-blocking -->
+  <link rel="preload" as="style" href="{{ '/assets/main.css' | relative_url }}" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="{{ '/assets/syntax.css' | relative_url }}" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/syntax.css' | relative_url }}">
+  </noscript>
+
+  {%- feed_meta -%}
+
+  <style id="fallback-h1-size">
+    /* Fallback heading size until external CSS loads (deprecation fix) */
+    article h1, section h1, nav h1, aside h1 { font-size: 2rem; }
+  </style>
+
+</head>

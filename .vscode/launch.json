@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Jekyll Server",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "bundle",
+            "runtimeArgs": [
+                "exec",
+                "jekyll",
+                "serve",
+                "--livereload",
+                "--quiet",
+                "--config",
+                "_config-dev.yml"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+} 

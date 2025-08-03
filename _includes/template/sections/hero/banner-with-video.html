@@ -1,0 +1,53 @@
+{% if page.hero %}
+<div class="pattern-square"></div>
+<section class="container py-lg-8 py-5">
+   <div class="row justify-content-center">
+      <div class="col-md-12 col-12">
+         <div class="text-center position-relative" >
+            <div class="ratio ratio-16x9" data-cue="slideInUp">
+               {% if page.hero.video.type == 'html5' %}
+               <script type="application/ld+json">
+                  {
+                    "@context": "https://schema.org",
+                    "@type": "VideoObject",
+                    "name": "{{ page.hero.title }}",
+                    "description": "{{ page.hero.description }}",
+                    "thumbnailUrl": [
+                      "{{ page.hero.image | absolute_url }}"
+                     ],
+                    "uploadDate": "{{ page.date | date: "%Y-%m-%dT%H:%M:%S%z" }}",
+                    "contentUrl": "{{ page.hero.video.url }}",
+                    "embedUrl": "{{ page.hero.video.url }}"
+                  }
+                  </script>   
+
+                  <video controls class="rounded-4 shadow-lg"
+                         {% if page.hero.video.poster %}poster="{{ page.hero.video.poster }}"{% endif %}>
+                     <source src="{{ page.hero.video.url }}" type="video/mp4">
+                     Your browser does not support the video tag.
+                  </video>
+               {% else %}
+                  <iframe src="{{ page.hero.video.url }}" 
+                          title="Solution Video" 
+                          allowfullscreen 
+                          class="rounded-4 shadow-lg">
+                  </iframe>
+               {% endif %}
+            </div>
+            {% if page.hero.image_left %}
+            <div class="position-absolute translate-middle top-50 d-none d-lg-block ms-lg-n5"  style="margin-left: 40px; margin-top: 40px;">
+               <img src="{{ page.hero.image_left | relative_url }}" alt="" data-cue="slideInLeft" class="rounded-3 border border-5 border-primary shadow-lg" width="200px">
+            </div>
+            {% endif %}
+            {% if page.hero.image_right %}
+            <div class="position-absolute top-50 end-0 translate-middle me-n9 d-none d-lg-block">
+               <img src="{{ '/assets/images/template/content/hero-frame-right-1.svg' | relative_url }}" class="me-n9 mb-4" alt="" data-cue="slideInRight">
+               <br>
+               <img src="{{ '/assets/images/template/content/hero-frame-right-2.svg' | relative_url }}" alt="" data-cue="slideInRight">
+            </div>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+</section>
+{% endif %}

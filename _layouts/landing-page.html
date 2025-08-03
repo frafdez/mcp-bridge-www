@@ -1,0 +1,294 @@
+---
+layout: marketing-template/default
+---
+
+<style>
+  /* Custom landing page styles */
+  .landing-hero {
+    position: relative;
+    background: linear-gradient(135deg, #6F00FF, #4B0082);
+    color: white;
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+  
+  .hero-blur {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: linear-gradient(to right, rgba(59,130,246,0.3), rgba(147,51,234,0.3));
+    filter: blur(6rem);
+    z-index: 0;
+  }
+  
+  .package-section {
+    position: relative;
+    background-color: var(--bs-body-bg);
+    padding: 4rem 0;
+  }
+  
+  .section-title {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .feature-card {
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+    border-left: 4px solid var(--bs-primary);
+  }
+  
+  [data-bs-theme="dark"] .feature-card {
+    background-color: rgba(var(--bs-primary-rgb), 0.15);
+  }
+  
+  .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+  }
+  
+  .roi-section {
+    background: linear-gradient(135deg, #6F00FF, #4B0082);
+    color: white;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .roi-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: none;
+    border-radius: 0.5rem;
+  }
+  
+  .roi-metric {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    position: relative;
+    display: inline-block;
+    padding: 0 0.2em;
+  }
+  
+  .roi-metric::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--bs-info), var(--bs-primary));
+    border-radius: 2px;
+  }
+  
+  .guarantee-section {
+    background-color: var(--bs-body-bg);
+    padding: 4rem 0;
+  }
+  
+  .guarantee-card {
+    border-left: 4px solid var(--bs-primary);
+    background-color: var(--bs-body-bg);
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Countdown timer styles */
+  .countdown-timer {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .trust-badge-icon {
+    font-size: 2rem;
+    color: #6F00FF;
+  }
+  
+  .trust-badge-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+</style>
+
+<!-- Black Header Section -->
+{% if page.title %}
+<section class="black-header-section py-5" style="background-color: #000000; color: white;">
+  <div class="container position-relative">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-10 position-relative">
+        <h1 class="display-2 fw-bold mb-0">{{ page.title }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Hero Section -->
+<section class="landing-hero">
+  <div class="hero-blur" style="top: -10rem; right: -5rem;"></div>
+  <div class="hero-blur" style="bottom: -10rem; left: -5rem;"></div>
+  <div class="container position-relative">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9 position-relative" style="z-index: 1;">
+        {% if page.show_countdown %}
+          <div class="countdown-timer">
+            <div class="countdown-title">Limited Time Opportunity</div>
+            <div class="countdown-display">
+              <div class="countdown-segment">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">days</span>
+              </div>
+              <div class="countdown-segment">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">hours</span>
+              </div>
+              <div class="countdown-segment">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">minutes</span>
+              </div>
+              <div class="countdown-segment">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">seconds</span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      
+        {% if page.subtitle %}
+          <h2 class="display-3 fw-bold mb-4">{{ page.subtitle }}</h2>
+        {% endif %}
+        
+        {% if page.hero_content %}
+          {{ page.hero_content }}
+        {% endif %}
+        
+        <div class="mt-4">
+          <a href="{{ page.cta_button_url | default: site.get_started_url | default: 'https://app.chatterkb.com/auth/signup' }}" class="btn btn-lg px-5 py-3 fw-bold fs-4" style="background-color: #0d6efd; color: white;">
+            BOOK YOUR FREE STRATEGY CALL
+          </a>
+        </div>
+        
+        {% if page.show_trust_badges %}
+          <div class="trust-badges">
+            <div class="trust-badge">
+              <i class="bi bi-shield-check trust-badge-icon"></i>
+              <span class="trust-badge-text">Money-Back Guarantee</span>
+            </div>
+            <div class="trust-badge">
+              <i class="bi bi-clock trust-badge-icon"></i>
+              <span class="trust-badge-text">Fast Results</span>
+            </div>
+            <div class="trust-badge">
+              <i class="bi bi-stars trust-badge-icon"></i>
+              <span class="trust-badge-text">5-Star Support</span>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+{{ content }}
+
+<!-- CTA Section -->
+{% if page.cta_title %}
+<section class="mt_cta px-0 py-5 py-md-7 position-relative overflow-hidden">
+  <div class="mt_cta_gradient" style="opacity: 0.1;"></div>
+  <div class="container position-relative">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card border-0 rounded-4 shadow-lg" style="box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;">
+          <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-12 text-center">
+                <h2 class="display-5 fw-bold mb-4">{{ page.cta_title }}</h2>
+                {% if page.cta_description %}
+                  <p class="lead fs-4 mb-5">{{ page.cta_description }}</p>
+                {% endif %}
+                {% if page.cta_button_text %}
+                  <a href="{{ page.cta_button_url | default: site.get_started_url | default: 'https://app.chatterkb.com/auth/signup' }}" class="btn mt_gradient_button btn-lg px-5 py-3 fw-bold fs-4">
+                    {{ page.cta_button_text }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Countdown Timer Script -->
+{% if page.show_countdown %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    
+    if (daysEl && hoursEl && minutesEl && secondsEl) {
+      // Set the countdown date to 7 days from now
+      const countdownDate = new Date();
+      countdownDate.setDate(countdownDate.getDate() + 7);
+      
+      function updateCountdown() {
+        const currentTime = new Date();
+        const diff = countdownDate - currentTime;
+        
+        const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+        const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+        const mins = Math.floor(diff / 1000 / 60) % 60;
+        const secs = Math.floor(diff / 1000) % 60;
+        
+        daysEl.innerHTML = days < 10 ? `0${days}` : days;
+        hoursEl.innerHTML = hours < 10 ? `0${hours}` : hours;
+        minutesEl.innerHTML = mins < 10 ? `0${mins}` : mins;
+        secondsEl.innerHTML = secs < 10 ? `0${secs}` : secs;
+      }
+      
+      // Initial call
+      updateCountdown();
+      
+      // Update the countdown every second
+      setInterval(updateCountdown, 1000);
+    }
+  });
+</script>
+{% endif %}

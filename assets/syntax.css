@@ -1,0 +1,111 @@
+.highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+
+/* Light theme (default) */
+[data-bs-theme="light"] .highlight, 
+.highlight {
+  color: #24292f;
+  background-color: #f6f8fa;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Dark theme */
+[data-bs-theme="dark"] .highlight {
+  color: #e6edf3;
+  background-color: #161b22;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Keywords */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: var(--bs-danger, #cf222e);
+}
+
+/* Error background */
+.highlight .gr {
+  color: var(--bs-body-bg, #f6f8fa);
+}
+
+/* Deleted */
+.highlight .gd {
+  color: var(--bs-danger-text, #82071e);
+  background-color: var(--bs-danger-bg-subtle, #ffebe9);
+}
+
+/* Built-in names */
+.highlight .nb, .highlight .nc, .highlight .no, .highlight .nn {
+  color: var(--bs-warning-text-emphasis, #953800);
+}
+
+/* String regex, attributes, tags */
+.highlight .sr, .highlight .na, .highlight .nt {
+  color: var(--bs-success-text-emphasis, #116329);
+}
+
+/* Inserted */
+.highlight .gi {
+  color: var(--bs-success-text-emphasis, #116329);
+  background-color: var(--bs-success-bg-subtle, #dafbe1);
+}
+
+/* Constants, literals, numbers */
+.highlight .kc, .highlight .l, .highlight .ld, .highlight .m, .highlight .mb, 
+.highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, 
+.highlight .mx, .highlight .sb, .highlight .bp, .highlight .ne, .highlight .nl, 
+.highlight .py, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, 
+.highlight .vm, .highlight .o, .highlight .ow {
+  color: var(--bs-primary, #0550ae);
+}
+
+/* GitHub specific */
+.highlight .gh, .highlight .gu {
+  color: var(--bs-primary, #0550ae);
+  font-weight: bold;
+}
+
+/* Strings */
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, 
+.highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, 
+.highlight .ss {
+  color: var(--bs-primary-text-emphasis, #0a3069);
+}
+
+/* Decorators and functions */
+.highlight .nd, .highlight .nf, .highlight .fm {
+  color: var(--bs-purple, #8250df);
+}
+
+/* Errors */
+.highlight .err {
+  color: var(--bs-body-bg, #f6f8fa);
+  background-color: var(--bs-danger-text, #82071e);
+}
+
+/* Comments */
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, 
+.highlight .cpf, .highlight .c1, .highlight .cs, .highlight .gl, .highlight .gt {
+  color: var(--bs-secondary-text, #6e7781);
+}
+
+/* Generic */
+.highlight .ni, .highlight .si {
+  color: var(--bs-body-color, #24292f);
+}
+
+/* Text styles */
+.highlight .ge {
+  color: var(--bs-body-color, #24292f);
+  font-style: italic;
+}
+
+.highlight .gs {
+  color: var(--bs-body-color, #24292f);
+  font-weight: bold;
+}
+
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}

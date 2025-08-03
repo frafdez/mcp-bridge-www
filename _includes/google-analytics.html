@@ -1,0 +1,15 @@
+<!-- Google tag (gtag.js) -->
+<!-- Global site tag (gtag.js) - GA4 and Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_ads }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Google Analytics 4 Tracking
+  gtag('config', '{{ site.google_analytics }}');
+
+  // Google Ads Tracking
+  gtag('config', '{{ site.google_ads }}');
+</script>

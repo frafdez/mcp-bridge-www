@@ -1,0 +1,35 @@
+{% if page.hero %}
+<div class="pattern-square"></div>
+<section class="pt-lg-7 pt-5" data-cue="fadeIn">
+    <div class="container">
+       <div class="row align-items-center justify-content-lg-start justify-content-center flex-lg-nowrap">
+          <div class="col-lg-5 col-12" data-cues="slideInDown" data-group="page-title" data-delay="700" data-disabled="true">
+             <div class="text-center text-lg-start" data-cue="zoomIn" data-group="page-title" data-delay="700">
+                <div class="mb-5">
+                   <h1 class="mb-3 display-4">{{ page.hero.title }}</h1>
+                   <p class="lead mb-0">{{ page.hero.description }}</p>
+                </div>
+                <div data-cues="slideInDown">
+                    {% if page.hero.button.html %}
+                            {{ page.hero.button.html }}
+                    {% else %}
+                        <a href="{{ page.hero.button.url }}" class="btn btn-primary me-2" data-cue="slideInDown" data-group="page-title-buttons" data-delay="800">{{ page.hero.button.text }}</a>
+                    {% endif %}
+                </div>
+             </div>
+          </div>
+          <div class="col-xxl-7 offset-xxl-1 col-lg-7 col-12 mt-5 mt-lg-0" data-cue="fadeIn" data-delay="1000">
+             <div class="position-relative">
+                <div class="bg-light-subtle p-md-4 p-2 rounded-4 border scene" data-relative-input="true">
+                   <div data-depth="0.09">
+                      <figure data-cues="zoomIn" data-delay="900" data-disabled="true">
+                         <img src="{{ page.hero.image | relative_url }}" alt="landing" class="w-100" data-cue="zoomIn" data-delay="900">
+                      </figure>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+{% endif %}

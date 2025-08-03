@@ -1,0 +1,19 @@
+{% if page.solution %}
+{% unless page.solution.hide_banner %}
+<div class="pattern-square"></div>
+{% endunless %}
+<section class="container my-xl-7 py-5 px-4" data-cue="fadeIn">
+   <div class="text-center d-flex flex-column mt-7 mb-5" data-cue="zoomIn" data-group="page-title" data-delay="700" style="animation-name: zoomIn; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 700ms; animation-direction: normal; animation-fill-mode: both;">
+      <div class="d-flex flex-column gap-3 mx-lg-8">
+         <h1 class="mb-0">{{ page.solution.title }}</h1>
+         {% if page.solution.description %}
+         <p class="mb-0 lead">{{ page.solution.description }}</p>
+         {% endif %}
+         <div class="d-flex flex-row gap-4 justify-content-center">
+            <a href="{{ page.solution.button.url | default: site.signup_url }}" class="btn btn-primary">{{ page.solution.button.text }}</a>
+         </div>
+      </div>
+   </div>
+</section>
+
+{% endif %}

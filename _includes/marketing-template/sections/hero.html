@@ -1,0 +1,103 @@
+<section class="mt_hero py-5 py-lg-7 position-relative overflow-hidden" style="padding-top: 6rem; padding-bottom: 6rem;">
+  <!-- Subtle gradient background that works in both light and dark mode -->
+  <div class="mt_bg_gradient position-absolute inset-0 w-100 h-100 top-0"></div>
+  
+  <!-- Decorative blurred elements -->
+  <div class="position-absolute top-25 end-0 d-none d-md-block" 
+       style="width: 24rem; height: 24rem; background-color: hsl(262.1, 83.3%, 57.8%, 0.2); border-radius: 50%; 
+              opacity: 0.3; filter: blur(3rem); z-index: 0;"></div>
+  <div class="position-absolute bottom-25 start-0 d-none d-md-block" 
+       style="width: 24rem; height: 24rem; background-color: hsl(262.1, 83.3%, 57.8%, 0.15); border-radius: 50%; 
+              opacity: 0.3; filter: blur(3rem); z-index: 0;"></div>
+  
+  <div class="container position-relative">
+    <div class="row align-items-center" style="padding: 2rem 0;">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="mb-5">
+          <!-- Split title with styled "Automated" -->
+          <h1 class="display-4 fw-bold mb-3">
+            {% if page.hero.split_title %}
+              {{ page.hero.split_title.main }}
+            {% else %}
+              {{ page.hero.title }}
+            {% endif %}
+          </h1>
+          {% if page.hero.split_title %}
+          <h1 class="display-4 fw-bold mb-0">
+            <span class="mt_gradient_text">{{ page.hero.split_title.highlight }}</span>
+          </h1>
+          {% endif %}
+        </div>
+        <p class="lead fs-4 mb-5 mt_secondary_text">{{ page.hero.description }}</p>
+        <div class="d-flex flex-column flex-sm-row gap-3 mt-5">
+          {% if page.hero.primary_button %}
+          <a href="{{ page.hero.primary_button.url }}" class="btn btn-lg px-5 py-3 mt_gradient_button">
+            {{ page.hero.primary_button.text }}
+          </a>
+          {% endif %}
+          {% if page.hero.secondary_button %}
+          <a href="{{ page.hero.secondary_button.url }}" class="btn btn-outline-secondary btn-lg px-5 py-3">
+            <i class="bi bi-calendar-event me-2"></i>{{ page.hero.secondary_button.text }}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="position-relative">
+          <div class="rounded-4 shadow-lg overflow-hidden border" style="border-color: var(--mt-light-border);">
+            {% if page.hero.video %}
+
+            <script type="application/ld+json">
+              {
+                "@context": "https://schema.org",
+                "@type": "VideoObject",
+                "name": "{{ page.hero.title }}",
+                "description": "{{ page.hero.description }}",
+                "thumbnailUrl": [
+                  "{{ page.hero.image | absolute_url }}"
+                 ],
+                "uploadDate": "{{ page.date | date: "%Y-%m-%dT%H:%M:%S%z" }}",
+                "contentUrl": "{{ page.hero.video.url }}",
+                "embedUrl": "{{ page.hero.video.url }}"
+              }
+              </script>
+
+              {% if page.hero.video.type == "html5" %}
+                {% assign v = page.hero.video %}
+                <video class="img-fluid w-100"
+                  {% if v.autoplay != false %}autoplay{% endif %}
+                  {% if v.loop != false %}loop{% endif %}
+                  {% if v.muted != false %}muted{% endif %}
+                  {% if v.controls or v.autoplay == false %}controls{% endif %}
+                  playsinline>
+                  <source src="{{ v.url }}" type="{{ v.mime | default: 'video/mp4' }}">
+                </video>
+              {% else %}
+                <div class="ratio ratio-16x9">
+                  {% assign iframe_url = page.hero.video.url %}
+                  {% if page.hero.video.autoplay == false %}
+                    {% assign iframe_url = iframe_url | append: '?autoplay=0&controls=1' %}
+                  {% else %}
+                    {% assign iframe_url = iframe_url | append: '?autoplay=1&mute=1&controls=1' %}
+                  {% endif %}
+                  <iframe src="{{ iframe_url }}" title="{{ page.title }}" frameborder="0" allow="encrypted-media{% unless page.hero.video.autoplay == false %}; autoplay{% endunless %}" allowfullscreen class="w-100 h-100"></iframe>
+                </div>
+              {% endif %}
+            {% elsif page.hero.image %}
+              <img src="{{ page.hero.image }}" alt="{{ page.hero.alt | default: page.title }}" class="img-fluid w-100" fetchpriority="high">
+            {% else %}
+              <div class="p-5 text-center" style="height: 400px; background-color: var(--bs-secondary-bg);">
+                <div class="d-flex align-items-center justify-content-center h-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="text-secondary" viewBox="0 0 16 16">
+                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                  </svg>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

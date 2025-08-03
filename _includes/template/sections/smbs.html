@@ -1,0 +1,181 @@
+{% if page.smbs %}
+<div class="pattern-square"></div>
+<section class="my-lg-7 py-6 mt-5">
+   <div class="container" data-cue="zoomIn">
+      <div class="row">
+         <div class="col-lg-8 offset-lg-2 col-md-12">
+            <div class="text-center mb-5 mb-lg-7">
+               <small class="border rounded-pill border-primary-subtle text-primary text-uppercase px-3 py-2 fw-semibold">{{ page.smbs.section_title }}</small>
+               <h2 class="my-5 px-lg-8">{{ page.smbs.title }}</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-12">
+            <div class="tabs-to-dropdown">
+               <div class="nav-wrapper mb-lg-8">
+                  <!-- Dropdown for small screens -->
+                  <div class="dropdown d-lg-none mb-4">
+                     <button class="btn btn-light w-100 d-flex justify-content-between align-items-center dropdown-toggle" 
+                             type="button" 
+                             id="dropdownMenuButton" 
+                             data-bs-toggle="dropdown" 
+                             aria-haspopup="true" 
+                             aria-expanded="false">
+                        {{ page.smbs.items[0].tab_title }}
+                     </button>
+                     <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                        {% for item in page.smbs.items %}
+                        <a class="dropdown-item" href="#" data-bs-toggle="pill" data-bs-target="#pills-{{ item.tab_title | downcase | replace: ' ', '-' }}">{{ item.tab_title }}</a>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  
+                  <!-- Navigation for large screens -->
+                  <ul class="nav nav-fill d-none d-lg-flex nav-line-bottom nav-pills mb-4" id="pills-tab" role="tablist">
+                     {% for item in page.smbs.items %}
+                     <li class="nav-item" role="presentation">
+                        <a href="#!" class="nav-link {% if forloop.first %}active{% endif %}" 
+                           id="pills-{{ item.tab_title | downcase | replace: ' ', '-' }}-tab" 
+                           data-bs-toggle="pill" 
+                           data-bs-target="#pills-{{ item.tab_title | downcase | replace: ' ', '-' }}" 
+                           role="tab" 
+                           aria-controls="pills-{{ item.tab_title | downcase | replace: ' ', '-' }}" 
+                           aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                           {{ item.tab_title }}
+                        </a>
+                     </li>
+                     {% endfor %}
+                  </ul>
+               </div>
+               <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                     const dropdownItems = document.querySelectorAll('.dropdown-menu .dropdown-item');
+                     const dropdownButton = document.getElementById('dropdownMenuButton');
+                     const tabLinks = document.querySelectorAll('[data-bs-toggle="pill"]');
+
+                     // Handle dropdown item clicks
+                     dropdownItems.forEach(item => {
+                        item.addEventListener('click', function (event) {
+                           event.preventDefault();
+                           const selectedText = this.textContent.trim();
+                           dropdownButton.textContent = selectedText;
+
+                           const targetId = this.getAttribute('data-bs-target');
+                           const tab = new bootstrap.Tab(document.querySelector(`${targetId}-tab`));
+                           tab.show();
+                        });
+                     });
+
+                     // Handle tab changes from any source
+                     tabLinks.forEach(tabLink => {
+                        tabLink.addEventListener('shown.bs.tab', function (event) {
+                           const selectedText = event.target.textContent.trim();
+                           dropdownButton.textContent = selectedText;
+                        });
+                     });
+                  });
+               </script>
+               <!-- Tab Content -->
+               <div class="tab-content" id="pills-tabContentOne">
+                  {% for item in page.smbs.items %}
+                  <div class="tab-pane fade {% if forloop.first %}active show{% endif %}" 
+                       id="pills-{{ item.tab_title | downcase | replace: ' ', '-' }}" 
+                       role="tabpanel" 
+                       data-cue="slideInDown"
+                       aria-labelledby="pills-{{ item.tab_title | downcase | replace: ' ', '-' }}-tab" 
+                       tabindex="0">
+                     <div class="row align-items-center">
+                        {% if item.style == 'left' %}
+                        <div class="col-lg-6 col-12 order-2 order-lg-1">
+                           <div class="mx-lg-5">
+                              <div class="mb-6">
+                                 <h2>{{ item.title }}</h2>
+                                 <p class="mb-0">{{ item.description }}</p>
+                              </div>
+                              {% for point in item.points %}
+                              <div class="d-flex {% unless forloop.last %}mb-5{% endunless %}">
+                                 <div>
+                                    <i class="bi {{ point.icon }} {{ point.color_class }}"></i>
+                                 </div>
+                                 <div class="ms-3">
+                                    <h5>{{ point.title }}</h5>
+                                    <p class="mb-0 {% if point.description contains '"' %}quote{% endif %}">{{ point.description }}</p>
+                                 </div>
+                              </div>
+                              {% endfor %}
+                           </div>
+                        </div>
+                        <div class="col-lg-6 col-12 order-1">
+                           <div class="position-relative">
+                              <div class="ms-lg-5 position-relative">
+                                 <figure>
+                                    <img src="{{ item.main_image | relative_url }}" alt="tab1" class="img-fluid rounded-3 mb-5">
+                                 </figure>
+                                 {% if item.foreground_image %}
+                                 <div class="position-absolute bottom-0 end-0 me-md-n7 me-n3 mb-n4">
+                                    <figure>
+                                       <img src="{{ item.foreground_image | relative_url }}" alt="account" class="rounded border {{ item.outline_class }} border-4 shadow" style="max-height: 200px; width: 100%;">
+                                    </figure>
+                                 </div>
+                                 {% endif %}
+                              </div>
+                              <div class="position-absolute start-0 bottom-0 z-n1 d-none d-lg-block">
+                                 <figure>
+                                    <img src="{{ item.background_image | relative_url }}" alt="bgtab">
+                                 </figure>
+                              </div>
+                           </div>
+                        </div>
+                        {% else %}
+                        <div class="col-lg-6 col-12">
+                           <div class="position-relative">
+                              <div class="me-lg-5 position-relative">
+                                 <figure>
+                                    <img src="{{ item.main_image | relative_url }}" alt="tab1" class="img-fluid rounded-3 mb-5">
+                                 </figure>
+                                 {% if item.foreground_image %}
+                                 <div class="position-absolute bottom-0 ms-2 mb-5">
+                                    <figure>
+                                       <img src="{{ item.foreground_image | relative_url }}" alt="account" class="rounded border {{ item.outline_class }} border-4 shadow" style="max-height: 200px; height: 100%;">
+                                    </figure>
+                                 </div>
+                                 {% endif %}
+                              </div>
+                              <div class="position-absolute end-0 bottom-0 z-n1 d-none d-lg-block">
+                                 <figure>
+                                    <img src="{{ item.background_image | relative_url }}" alt="bgtab">
+                                 </figure>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                           <div class="mx-lg-5">
+                              <div class="mb-6">
+                                 <h2>{{ item.title }}</h2>
+                                 <p class="mb-0">{{ item.description }}</p>
+                              </div>
+                                 {% for point in item.points %}
+                                 <div class="d-flex {% unless forloop.last %}mb-5{% endunless %}">
+                                    <div>
+                                       <i class="bi {{ point.icon }} {{ point.color_class }}"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                       <h5>{{ point.title }}</h5>
+                                       <p class="mb-0 {% if point.description contains '"' %}quote{% endif %}">{{ point.description }}</p>
+                                    </div>
+                                 </div>
+                                 {% endfor %}
+                           </div>
+                        </div>
+                        {% endif %}
+                     </div>
+                  </div>
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+{% endif %}

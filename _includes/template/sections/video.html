@@ -1,0 +1,19 @@
+<section class="container my-xl-7 {{ page.video.container_class }}" data-cue="fadeIn">
+    {% if page.video.url %}
+    <div class="ratio ratio-16x9" data-cue="slideInUp">
+       {% if page.video.type == 'html5' %}
+          <video controls class="rounded-4 shadow-lg"
+                 {% if page.video.poster %}poster="{{ page.video.poster }}"{% endif %}>
+             <source src="{{ page.video.url }}" type="video/mp4">
+             Your browser does not support the video tag.
+          </video>
+       {% else %}
+          <iframe src="{{ page.video.url }}" 
+                  title="Solution Video" 
+                  allowfullscreen 
+                  class="rounded-4 shadow-lg">
+          </iframe>
+       {% endif %}
+    </div>
+    {% endif %}
+</section>

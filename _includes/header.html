@@ -1,0 +1,41 @@
+<header class="site-header" role="banner">
+  <nav class="navbar border-0 navbar-expand-sm mx-2">
+    <div class="container-fluid">
+      {%- assign default_paths = site.pages | map: "path" -%}
+      {%- assign page_paths = site.header_pages -%}
+      <a class="navbar-brand d-flex align-items-center" href="{{ "/" | relative_url }}">
+        <img src="{{ '/assets/images/chatterkb-logo-ex.png' | relative_url }}" alt="ChatterKB Logo" class="logo-image">
+        <span class="logo-text">Chatter<span style="color: darkgray;">KB</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          {%- if page_paths -%}
+            {%- for path in page_paths -%}
+              {%- assign my_page = site.pages | where: "path", path | first -%}
+              {%- if my_page.title -%}
+                <li class="nav-item">
+                  <a class="nav-link {%- if page.url == my_page.url %} active {%- endif -%}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          <li class="nav-item"></li>
+            <a class="nav-link" href="{{ site.pricing_url }}">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ site.sign_in_url }}">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <button id="theme-toggle" class="nav-link">
+              <i id="theme-icon" class="bi bi-circle-half"></i>
+              <span class="d-sm-none">Toggle Theme</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

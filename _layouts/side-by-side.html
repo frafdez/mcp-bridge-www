@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+{% if page.hero %}
+{% include side-by-side/sections/hero/title.html %}   
+{% if page.hero.video %}
+{% include side-by-side/sections/hero/banner-with-video.html %}
+{% else %}
+{% include side-by-side/sections/hero/banner.html %}
+{% endif %}
+{% endif %}
+
+{% if page.features_overview %}
+{% include side-by-side/sections/features-overview.html %}
+{% endif %}
+
+{% if page.problems %}
+{% include side-by-side/sections/problems.html %}
+{% endif %}
+
+{% if page.how_it_works %}
+{% include side-by-side/sections/how-it-works.html %}
+{% endif %}
+
+{% if page.solution %}
+{% include side-by-side/sections/solution.html %}
+{% endif %}
+
+{% if page.video %}
+{% include side-by-side/sections/video.html %}
+{% endif %}
+
+{% if page.features %}
+{% include side-by-side/sections/features/main.html %}
+{% endif %}
+
+{% if page.additional_features %}
+{% include side-by-side/sections/features/additional.html %}
+{% endif %}
+
+{% if page.integrations %}
+{% include side-by-side/sections/integrations.html %}
+{% endif %}
+
+{% if page.models %}
+{% include side-by-side/sections/models.html %}
+{% endif %}
+
+{% if page.testimonials %}
+{% include side-by-side/sections/testimonials.html %}
+{% endif %}
+
+{% if page.pricing_teaser %}
+{% include side-by-side/sections/pricing-teaser.html %}
+{% endif %}
+
+{% if page.smbs %}
+{% include side-by-side/sections/smbs.html %}
+{% endif %}
+
+{% if page.cta %}
+{% include side-by-side/sections/cta-custom.html %}
+{% endif %}

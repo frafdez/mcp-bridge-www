@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}" data-bs-theme="light">
+
+  {%- include marketing-template/head.html -%}
+
+  <body>
+
+    {%- include marketing-template/header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      {{ content }}
+    </main>
+
+    {%- include footer-simple.html -%}
+
+    <!-- Script for the sticky header -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.marketing-header');
+        
+        if (header) {
+          const sticky = header.offsetTop;
+          
+          function handleScroll() {
+            if (window.pageYOffset > sticky) {
+              header.classList.add('sticky-header');
+            } else {
+              header.classList.remove('sticky-header');
+            }
+          }
+          
+          window.addEventListener('scroll', handleScroll);
+        }
+      });
+    </script>
+  </body>
+
+</html> 

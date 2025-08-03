@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+{% if page.hero %}
+{% include template/sections/hero/title.html %}   
+{% include template/sections/hero/banner.html %}
+{% endif %}
+
+{% if page.problems %}
+{% include template/sections/problems.html %}
+{% endif %}
+
+{% if page.solution %}
+{% include template/sections/solution.html %}
+{% endif %}
+
+{% if page.video %}
+{% include template/sections/video.html %}
+{% endif %}
+
+{% if page.features %}
+{% include template/sections/features/main.html %}
+{% endif %}
+
+{% if page.additional_features %}
+{% include template/sections/features/additional.html %}
+{% endif %}
+
+{% if page.smbs %}
+{% include template/sections/smbs.html %}
+{% endif %}
+
+{% if page.cta %}
+{% include template/sections/cta-custom.html %}
+{% endif %}
+
+
+

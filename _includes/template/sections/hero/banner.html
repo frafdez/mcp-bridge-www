@@ -1,0 +1,22 @@
+{% if page.hero %}
+<div class="pattern-square"></div>
+<section class="container py-lg-8 py-5">
+   <div class="row justify-content-center">
+      <div class="col-md-10 col-12">
+         <div class="text-center position-relative" >
+            <img src="{{ page.hero.image | relative_url }}" class="img-fluid bg-light p-3 rounded-3 border" alt="" data-cue="zoomIn">
+            {% if page.hero.show_image_right == nil or page.hero.show_image_right == true %}
+            <div class="position-absolute translate-middle top-50 d-none d-lg-block ms-lg-n5"  style="margin-left: 70px; margin-top: 70px;">
+               <img src="{{ page.hero.image_left | relative_url }}" alt="" data-cue="slideInLeft" class="rounded-3 border border-5 border-primary shadow-lg" width="200px">
+            </div>
+            <div class="position-absolute top-50 end-0 translate-middle me-n9 d-none d-lg-block">
+               <img src="{{ '/assets/images/template/content/hero-frame-right-1.svg' | relative_url }}" class="me-n9 mb-4" alt="" data-cue="slideInRight">
+               <br>
+               <img src="{{ '/assets/images/template/content/hero-frame-right-2.svg' | relative_url }}" alt="" data-cue="slideInRight">
+            </div>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+</section>
+{% endif %}

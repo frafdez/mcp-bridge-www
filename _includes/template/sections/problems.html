@@ -1,0 +1,62 @@
+{% if page.problems %}
+<section id="problems" class="container my-xl-7 py-5">
+   {% if page.problems.title %}
+   <div class="row justify-content-center mb-4">
+      <div class="col-xl-6 col-lg-10 col-12">
+         <div class="text-center d-flex flex-column gap-5">
+            <div class="d-flex flex-column gap-3 mx-lg-8">
+               <hr class="w-25 mx-auto" />
+               <h1 class="mb-0">{{ page.problems.title }}</h1> 
+               <hr class="w-25 mx-auto" />
+            </div>
+         </div>
+      </div>
+   </div>
+   {% endif %}
+  {% for item in page.problems.items %}
+      {% if item.side == 'left' %}
+      <div class="row d-flex align-items-center my-4">
+         <div class="col-lg-5 col-md-6 col-12" data-cue="slideInLeft">
+            <div data-cue="fadeIn">
+               {% if item.section_title %}
+               <small class="text-primary text-uppercase ls-md fw-semibold">{{ item.section_title }}</small>
+               {% endif %}
+               <div class="my-4">
+                  <h2 class="mb-3">{{ item.title }}</h2>
+                  <p class="mb-0 lead">{{ item.description | markdownify }}</p> 
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6 offset-lg-1 col-md-6 col-12" data-cue="slideInRight">
+            <div class="position-relative">
+               <figure>
+                  <img src="{{ item.image | relative_url }}" alt="landing" class="img-fluid rounded-4">
+               </figure>
+            </div>
+         </div>
+      </div>
+      {% else %}
+      <div class="row d-flex align-items-center my-4">
+         <div class="col-lg-6 col-md-6 col-12 order-lg-2 order-1" data-cue="slideInLeft">
+            <div class="position-relative">
+               <figure>
+                  <img src="{{ item.image | relative_url }}" alt="landing" class="img-fluid rounded-4">
+               </figure>
+            </div>
+         </div>
+         <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2" data-cue="slideInRight">
+            <div class="mt-4">
+               {% if item.section_title %}
+               <small class="text-primary text-uppercase ls-md fw-semibold">{{ item.section_title }}</small>
+               {% endif %}
+               <div class="my-4">
+                  <h2 class="mb-3">{{ item.title }}</h2>
+                  <p class="lead mb-0">{{ item.description | markdownify }}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+  {% endfor %}
+</section>
+{% endif %}

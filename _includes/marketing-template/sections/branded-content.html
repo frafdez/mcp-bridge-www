@@ -1,0 +1,87 @@
+<section class="py-5 py-md-7 position-relative overflow-hidden">
+  <!-- Background gradient -->
+  <div class="mt_bg_gradient position-absolute inset-0 w-100 h-100 top-0"></div>
+  
+  <!-- Decorative blurred elements -->
+  <div class="position-absolute top-25 end-0 d-none d-md-block" 
+       style="width: 20rem; height: 20rem; background-color: hsl(0, 70%, 60%, 0.2); border-radius: 50%; 
+              opacity: 0.4; filter: blur(3rem); z-index: 0;"></div>
+  <div class="position-absolute bottom-25 start-0 d-none d-md-block" 
+       style="width: 18rem; height: 18rem; background-color: hsl(15, 80%, 65%, 0.15); border-radius: 50%; 
+              opacity: 0.3; filter: blur(3rem); z-index: 0;"></div>
+  
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="pe-lg-4">
+          <h2 class="display-5 fw-bold mb-3">{{ page.branded_content.title | default: "Turn Your Expertise Into Lead Generation" }}</h2>
+          <p class="lead mb-4">{{ page.branded_content.description | default: "Create branded, public knowledge bases that showcase your expertise while generating qualified leads. Position your organization as the go-to authority in your field." }}</p>
+          
+          <div class="row g-4">
+            <div class="col-sm-6">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 48px; height: 48px;">
+                    <i class="bi bi-palette fs-5"></i>
+                  </div>
+                </div>
+                <div class="ms-3">
+                  <h5 class="mb-1">{{ page.branded_content.features[0].title | default: "Custom Branding" }}</h5>
+                  <p class="text-muted mb-0 small">{{ page.branded_content.features[0].description | default: "Add your logo, colors, and custom CSS for complete brand control" }}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-6">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-success text-white" style="width: 48px; height: 48px;">
+                    <i class="bi bi-people fs-5"></i>
+                  </div>
+                </div>
+                <div class="ms-3">
+                  <h5 class="mb-1">{{ page.branded_content.features[1].title | default: "Lead Generation" }}</h5>
+                  <p class="text-muted mb-0 small">{{ page.branded_content.features[1].description | default: "Capture prospects through valuable, accessible knowledge" }}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-6">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-warning text-white" style="width: 48px; height: 48px;">
+                    <i class="bi bi-trophy fs-5"></i>
+                  </div>
+                </div>
+                <div class="ms-3">
+                  <h5 class="mb-1">{{ page.branded_content.features[2].title | default: "Thought Leadership" }}</h5>
+                  <p class="text-muted mb-0 small">{{ page.branded_content.features[2].description | default: "Position your brand as the expert authority in your field" }}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-6">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-info text-white" style="width: 48px; height: 48px;">
+                    <i class="bi bi-headset fs-5"></i>
+                  </div>
+                </div>
+                <div class="ms-3">
+                  <h5 class="mb-1">{{ page.branded_content.features[3].title | default: "Self-Service Support" }}</h5>
+                  <p class="text-muted mb-0 small">{{ page.branded_content.features[3].description | default: "Reduce support load with intelligent, branded help centers" }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="text-center">
+          <img src="{{ page.branded_content.image | default: '/assets/images/marketing/branded-content-demo.png' }}" alt="Branded Content Marketing" class="img-fluid rounded-4 shadow-lg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

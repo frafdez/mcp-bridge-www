@@ -1,0 +1,229 @@
+---
+layout: marketing-template/default
+---
+
+{% if page.hero %}
+{% include marketing-template/sections/hero.html %}
+{% endif %}
+
+{% assign comp_name = page.competitor_name | default: page.competitor.name | default: "Competitor" %}
+{% assign cb_icon = page.icons.chatterkb | default: "/assets/images/marketing/chatterkb-icon.svg" %}
+{% assign comp_icon = page.icons.competitor | default: "/assets/images/marketing/competitor-icon.svg" %}
+
+<!-- ============================== -->
+<!--  Differences Section           -->
+<!-- ============================== -->
+{% if page.differences %}
+<section class="py-7 py-md-9">
+  <div class="container">
+    <h2 class="display-5 fw-bold text-center mb-6">ChatterKB vs {{ comp_name }}: What’s the difference?</h2>
+    {% if page.differences.rows %}
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead class="table-light">
+          <tr>
+            <th scope="col" class="text-start">Feature</th>
+            <th scope="col"><img src="{{ cb_icon }}" alt="ChatterKB icon" width="32" class="me-2 align-middle"> ChatterKB</th>
+            <th scope="col"><img src="{{ comp_icon }}" alt="{{ comp_name }} icon" width="32" class="me-2 align-middle"> {{ comp_name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in page.differences.rows %}
+          <tr>
+            <th scope="row" class="text-start">{{ r.label }}</th>
+            <td>{{ r.chatterkb }}</td>
+            <td>{{ r.competitor }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% elsif page.differences.chatterkb and page.differences.competitor %}
+    <div class="row align-items-start g-5 flex-md-row">
+      <div class="col-md-6">
+        <h4 class="fw-semibold"><img src="{{ cb_icon }}" alt="ChatterKB icon" width="32" class="me-2 align-middle"> ChatterKB</h4>
+        <ul class="list-unstyled lh-lg">
+          {% for item in page.differences.chatterkb %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-semibold"><img src="{{ comp_icon }}" alt="{{ comp_name }} icon" width="32" class="me-2 align-middle"> {{ comp_name }}</h4>
+        <ul class="list-unstyled lh-lg">
+          {% for item in page.differences.competitor %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ============================== -->
+<!--  About Section                 -->
+<!-- ============================== -->
+{% if page.about and page.about.chatterkb and page.about.competitor %}
+<section class="py-7 py-md-9 bg-body-tertiary">
+  <div class="container">
+    {% assign has_image = page.about.image %}
+    {% if has_image %}
+    <div class="row g-5 align-items-center row-cols-1 row-cols-md-2 {% if page.about.reverse %}flex-md-row-reverse{% endif %}">
+      <div class="col-md-6">
+        <h3 class="fw-bold mb-3"><img src="{{ cb_icon }}" alt="ChatterKB icon" width="32" class="me-2 align-middle"> About ChatterKB</h3>
+        <div class="mb-4 lh-lg">{{ page.about.chatterkb | markdownify }}</div>
+        <h3 class="fw-bold mb-3"><img src="{{ comp_icon }}" alt="{{ comp_name }} icon" width="32" class="me-2 align-middle"> About {{ comp_name }}</h3>
+        <div class="lh-lg">{{ page.about.competitor | markdownify }}</div>
+      </div>
+      <div class="col-md-6 text-center order-md-2">
+        <img src="{{ page.about.image }}" class="img-fluid" alt="ChatterKB vs {{ comp_name }} overview" />
+      </div>
+    </div>
+    {% else %}
+    <div class="row row-cols-1 row-cols-md-2 g-5">
+      <div class="col">
+        <h3 class="fw-bold mb-3"><img src="{{ cb_icon }}" alt="ChatterKB icon" width="32" class="me-2 align-middle"> About ChatterKB</h3>
+        <div class="lh-lg">{{ page.about.chatterkb | markdownify }}</div>
+      </div>
+      <div class="col">
+        <h3 class="fw-bold mb-3"><img src="{{ comp_icon }}" alt="{{ comp_name }} icon" width="32" class="me-2 align-middle"> About {{ comp_name }}</h3>
+        <div class="lh-lg">{{ page.about.competitor | markdownify }}</div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ============================== -->
+<!--  Pricing Comparison            -->
+<!-- ============================== -->
+{% if page.pricing and page.pricing.chatterkb and page.pricing.competitor %}
+<section class="py-7 py-md-9">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-6">Pricing Comparison</h2>
+    <div class="row g-5 align-items-start">
+      <div class="col-md-6">
+        <div class="p-4 border rounded-3 h-100">
+          <h4 class="fw-semibold mb-3"><img src="{{ cb_icon }}" alt="ChatterKB icon" width="32" class="me-2 align-middle"> ChatterKB</h4>
+          {% if page.pricing.cb_markdown %}
+            <div class="lh-lg">{{ page.pricing.cb_markdown | markdownify }}</div>
+          {% else %}
+            <ul class="list-unstyled">
+              {% for item in page.pricing.chatterkb %}<li class="mb-2">{{ item | markdownify }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-4 border rounded-3 h-100">
+          <h4 class="fw-semibold mb-3"><img src="{{ comp_icon }}" alt="{{ comp_name }} icon" width="32" class="me-2 align-middle"> {{ comp_name }}</h4>
+          {% if page.pricing.comp_markdown %}
+            <div class="lh-lg">{{ page.pricing.comp_markdown | markdownify }}</div>
+          {% else %}
+            <ul class="list-unstyled">
+              {% for item in page.pricing.competitor %}<li class="mb-2">{{ item | markdownify }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============================== -->
+<!--  Mid Journey CTA               -->
+<!-- ============================== -->
+{% if page.mid_cta %}
+<section class="py-7 py-md-9 bg-dark text-white text-center">
+  <div class="container">
+    {% if page.mid_cta.image %}
+      <div class="rounded-4 shadow-lg overflow-hidden border d-inline-block mb-5" style="border-color: var(--mt-light-border); max-width: 100%;">
+        <img src="{{ page.mid_cta.image }}" class="img-fluid" alt="CTA illustration" />
+      </div>
+    {% endif %}
+    {% if page.mid_cta.headline %}<h2 class="display-6 fw-bold mb-4">{{ page.mid_cta.headline }}</h2>{% endif %}
+    {% if page.mid_cta.button_text and page.mid_cta.button_url %}
+      <a href="{{ page.mid_cta.button_url }}" class="btn mt_gradient_button btn-lg px-5 py-3">{{ page.mid_cta.button_text }}</a>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ============================== -->
+<!--  Enterprise Section            -->
+<!-- ============================== -->
+{% if page.enterprise and page.enterprise.chatterkb and page.enterprise.competitor %}
+{% include marketing-comparison/compare-block.html title="Enterprise" cb_icon=cb_icon comp_icon=comp_icon comp_name=comp_name cb_text=page.enterprise.chatterkb comp_text=page.enterprise.competitor bg="" %}   
+{% endif %}
+
+{% if page.components %}
+  {% for c in page.components %}
+    {% include marketing-comparison/compare-block.html title=c.title cb_icon=cb_icon comp_icon=comp_icon comp_name=comp_name cb_text=c.cb_text comp_text=c.competitor_text bg=c.bg %}
+  {% endfor %}
+{% endif %}
+
+<!-- ============================== -->
+<!--  Which to Choose               -->
+<!-- ============================== -->
+{% if page.choose and page.choose.chatterkb and page.choose.competitor %}
+<section class="py-7 py-md-9 bg-primary text-white">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-5">ChatterKB vs {{ comp_name }}: Which one should your business choose?</h2>
+    <div class="row g-5 align-items-start">
+      <div class="col-md-6">
+        <h5 class="fw-semibold"><img src="{{ cb_icon }}" alt="ChatterKB icon" width="32" class="me-2 align-middle"> Choose ChatterKB if…</h5>
+        <ul class="lh-lg list-unstyled">
+          {% for item in page.choose.chatterkb %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h5 class="fw-semibold"><img src="{{ comp_icon }}" alt="{{ comp_name }} icon" width="32" class="me-2 align-middle"> Choose {{ comp_name }} if…</h5>
+        <ul class="lh-lg list-unstyled">
+          {% for item in page.choose.competitor %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============================== -->
+<!--  Standard CTA                  -->
+<!-- ============================== -->
+{% if page.cta %}
+{% include marketing-template/sections/cta-simple.html %}
+{% endif %} 
+
+<!-- Automatic Schema Markup -->
+{% if page.about and page.about.chatterkb and page.about.competitor %}
+  {% capture schema_json %}
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "ChatterKB",
+      "image": "{{ cb_icon }}",
+      "description": {{ page.about.chatterkb | markdownify | strip_html | strip_newlines | jsonify }},
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://chatterkb.com/pricing"}
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "{{ comp_name }}",
+      "image": "{{ comp_icon }}",
+      "description": {{ page.about.competitor | markdownify | strip_html | strip_newlines | jsonify }},
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListOrder": "http://schema.org/ItemListOrderAscending",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "url": "#chatterkb-column"},
+        {"@type": "ListItem", "position": 2, "url": "#{{ comp_name | slugify }}-column"}
+      ]
+    }
+  ]
+  {% endcapture %}
+  <script type="application/ld+json">{{ schema_json | strip_newlines }}</script>
+{% endif %} 

@@ -1,0 +1,1152 @@
+---
+# Any valid YAML with at least a blank line above and below
+---
+
+/* Main styles */
+// @import "minima";
+
+$light:     #dce0dd;
+$white:     #ffffff;
+$dark:      #170f0b;
+$primary:   #3a71a7;
+
+/* --- Local Bootstrap Icons setup --- */
+/* Local font face for Bootstrap Icons */
+@font-face {
+  font-family: "bootstrap-icons";
+  src: url("/assets/fonts/bootstrap-icons/bootstrap-icons.woff2") format("woff2"),
+       url("/assets/fonts/bootstrap-icons/bootstrap-icons.woff") format("woff");
+  font-display: swap;
+}
+@import "bootstrap-icons.css";
+@import "bootstrap-5.3.3/scss/bootstrap-utilities.scss";
+@import "theme-before.scss"; 
+@import "bootstrap-5.3.3/scss/bootstrap.scss";
+@import "theme-after.scss";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Marketing Template (mt_) Dark Mode Compatible Styles */
+/* ----------------------------------------------------- */
+
+/* Base colors that work in both light and dark modes */
+:root {
+  --mt-primary-gradient-from: #9333ea;
+  --mt-primary-gradient-to: #3b82f6;
+  --mt-light-bg: hsl(210, 40%, 98%);
+  --mt-dark-bg: hsl(222.2, 84%, 4.9%);
+  --mt-light-text: hsl(222.2, 84%, 4.9%);
+  --mt-dark-text: hsl(210, 40%, 98%);
+  --mt-light-muted: hsl(215.4, 16.3%, 46.9%);
+  --mt-dark-muted: hsl(215, 20.2%, 65.1%);
+  --mt-light-border: hsl(214.3, 31.8%, 91.4%);
+  --mt-dark-border: hsl(217.2, 32.6%, 17.5%);
+}
+
+/* Hero section with dark mode support */
+.mt_hero {
+  position: relative;
+  overflow: hidden;
+  
+  /* Light mode (default) */
+  background-color: var(--mt-light-bg);
+  color: var(--mt-light-text);
+}
+
+/* Dark mode styles for hero */
+[data-bs-theme="dark"] .mt_hero {
+  background-color: var(--mt-dark-bg);
+  color: var(--mt-dark-text);
+}
+  
+/* Gradient background */
+.mt_bg_gradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.4;
+  
+  /* Light mode gradient */
+  background: linear-gradient(135deg, hsl(210, 40%, 98%), hsl(214, 32%, 91%));
+}
+
+/* Dark mode gradient */
+[data-bs-theme="dark"] .mt_bg_gradient {
+  background: linear-gradient(135deg, hsl(222.2, 47.4%, 11.2%), hsl(215.4, 16.3%, 17%));
+}
+  
+/* Gradient text */
+.mt_gradient_text {
+  background: linear-gradient(to right, var(--mt-primary-gradient-from), var(--mt-primary-gradient-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+  
+/* Secondary text */
+.mt_secondary_text {
+  color: var(--mt-light-muted);
+}
+
+[data-bs-theme="dark"] .mt_secondary_text {
+  color: var(--mt-dark-muted);
+}
+
+/* Problems section with dark mode support */
+.mt_problems {
+  /* Light mode (default) */
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+  
+.mt_problem_card {
+  background-color: var(--bs-body-bg);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+[data-bs-theme="dark"] .mt_problem_card {
+  background-color: var(--bs-tertiary-bg);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Card hover effects */
+.mt_hover_lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+  
+.mt_hover_lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+[data-bs-theme="dark"] .mt_hover_lift:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* Icon containers */
+.mt_problem_icon_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* Document icon */
+.mt_problem_icon_container.document {
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+[data-bs-theme="dark"] .mt_problem_icon_container.document {
+  background-color: rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.mt_problem_icon_container.document .mt_problem_icon {
+  color: var(--bs-primary);
+}
+
+/* Chart icon */
+.mt_problem_icon_container.chart {
+  background-color: rgba(var(--bs-warning-rgb), 0.1);
+}
+
+[data-bs-theme="dark"] .mt_problem_icon_container.chart {
+  background-color: rgba(var(--bs-warning-rgb), 0.2);
+}
+
+.mt_problem_icon_container.chart .mt_problem_icon {
+  color: var(--bs-warning);
+}
+
+/* People icon */
+.mt_problem_icon_container.people {
+  background-color: rgba(var(--bs-danger-rgb), 0.1);
+}
+
+[data-bs-theme="dark"] .mt_problem_icon_container.people {
+  background-color: rgba(var(--bs-danger-rgb), 0.2);
+}
+
+.mt_problem_icon_container.people .mt_problem_icon {
+  color: var(--bs-danger);
+}
+
+/* Solution section with dark mode support */
+.mt_solution {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+/* Workflow component styles */
+.mt_workflow_wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 3rem;
+}
+
+/* Background line container */
+.mt_workflow_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* The actual connecting line */
+.mt_workflow_line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--bs-primary), var(--bs-info), var(--bs-success));
+  transform: translateY(-50%);
+}
+
+/* Card styling */
+.mt_workflow_card {
+  position: relative; 
+  z-index: 1;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 280px;
+}
+
+.mt_workflow_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+[data-bs-theme="dark"] .mt_workflow_card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+}
+
+/* Ensure cards are above line in dark mode */
+[data-bs-theme="dark"] .mt_workflow_card {
+  z-index: 10;
+}
+
+/* Card images */
+.mt_workflow_card img {
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  background-color: rgba(200, 200, 200, 0.2);
+  border-radius: 0.5rem;
+}
+
+[data-bs-theme="dark"] .mt_workflow_card img {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 992px) {
+  .mt_workflow_card img {
+    /* maintain aspect ratio in larger screens */
+  }
+}
+
+/* Card background colors - light mode */
+.mt_workflow_card_1 {
+  background-color: #f0f4ff;
+}
+
+.mt_workflow_card_2 {
+  background-color: #f0feff;
+}
+
+.mt_workflow_card_3 {
+  background-color: #f0fff7;
+}
+
+/* Card background colors - dark mode */
+[data-bs-theme="dark"] .mt_workflow_card_1 {
+  background-color: rgba(var(--bs-primary-rgb), 0.8);
+}
+
+[data-bs-theme="dark"] .mt_workflow_card_2 {
+  background-color: rgba(var(--bs-info-rgb), 0.8);
+}
+
+[data-bs-theme="dark"] .mt_workflow_card_3 {
+  background-color: rgba(var(--bs-success-rgb), 0.8);
+}
+
+/* Make sure text is visible in dark mode */
+[data-bs-theme="dark"] .mt_workflow_card h3,
+[data-bs-theme="dark"] .mt_workflow_card p {
+  color: var(--bs-body-color);
+}
+
+.mt_card_text {
+  color: var(--bs-body-color);
+}
+
+/* Badge styling */
+.mt_workflow_badge {
+  color: var(--bs-primary) !important;
+  background-color: white !important;
+}
+
+.mt_workflow_badge_1 {
+  color: var(--bs-primary) !important;
+}
+
+.mt_workflow_badge_2 {
+  color: var(--bs-info) !important;
+}
+
+.mt_workflow_badge_3 {
+  color: var(--bs-success) !important;
+}
+
+/* Badge styling - dark mode */
+[data-bs-theme="dark"] .mt_workflow_badge {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Number indicators */
+.mt_workflow_number {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  z-index: 2;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.mt_workflow_number_1 {
+  background-color: var(--bs-primary);
+}
+
+.mt_workflow_number_2 {
+  background-color: var(--bs-info);
+}
+
+.mt_workflow_number_3 {
+  background-color: var(--bs-success);
+}
+
+/* Placeholder for images */
+.mt_placeholder {
+  height: 160px;
+  background-color: rgba(200, 200, 200, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+}
+
+[data-bs-theme="dark"] .mt_placeholder {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mt_placeholder::after {
+  content: attr(data-text);
+  font-size: 14px;
+}
+
+@media (min-width: 992px) {
+  .mt_placeholder {
+    height: 180px;
+  }
+}
+
+/* Common gradient button that works in both modes */
+.mt_gradient_button {
+  background: linear-gradient(to right, var(--mt-primary-gradient-from), var(--mt-primary-gradient-to));
+  border: none;
+  color: white;
+}
+
+.mt_gradient_button:hover {
+  color: white;
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.bg-gray-900 {
+  --bs-bg-opacity: 1;
+  background-color: #0f172a !important;
+}
+@media (max-width: 990px) {
+  .cta .row {
+    padding: 20px;
+  
+  }
+
+  .cta {
+    padding: 0px !important;
+  }
+}
+
+.cta .row {
+  color: $gray-500;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+h1 {
+  font-weight: 500 !important;
+}
+
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1055; /* Ensure it's above other elements */
+  border: 1px solid $primary;
+}
+
+.logo-image {
+  @extend .me-1;
+  max-height: 30px;
+}
+
+.logo-text {
+  font-family: 'Comfortaa', sans-serif; 
+  font-weight: 300;
+}
+
+.btn-primary, 
+.btn-success,
+.btn-danger,
+.btn-warning,
+.btn-info {
+  color: white;
+}
+
+.nav-link {
+  border-color: gray;
+}
+
+.card {
+  // border: none;
+  @extend .shadow;
+}
+
+.dropdown-toggle { outline: 0; }
+
+.btn-toggle {
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: #d2f4ea;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #d2f4ea;
+}
+
+// ---------------------------------------------------------
+// Accordian Table is used for Pricing Page
+// ---------------------------------------------------------
+.accordion-table-btn {
+  @extend .accordion-button;
+  @extend .m-0;
+  @extend .p-0;
+  
+  /* Default styling */
+  background-color: #f8f9fa;
+  color: #212529;
+
+  /* Collapsed state */
+  &.collapsed {
+    background-color: rgba($light, 0.1);
+  }
+
+  /* Expanded state */
+  &:not(.collapsed) {
+    background-color: rgba($primary, 0.1);
+  }
+
+  &::after {
+    margin-left: -14px;
+    margin-right: 14px; /* Adjust the value as needed */
+  }
+
+  // Chevron icon styling
+  i {
+    display: inline-block;
+    margin-left: 6px; // Adjust the spacing as needed
+    transition: transform 0.3s ease;
+  }
+
+  &.collapsed {
+    i.bi-chevron-up {
+      transform: rotate(180deg);
+    }
+  } 
+
+}
+
+.accordion-td-container {
+  @extend .m-0;
+  @extend .p-0;
+}
+
+.accordion-table-header {
+  @extend .table;
+  @extend .table-borderless;
+  @extend .align-middle;
+  @extend .m-0;
+  @extend .p-0;
+
+  // width: calc(100% - 20px);
+}
+
+.accordion-table-inner {
+  @extend .table;
+  @extend .table-borderless;
+  @extend .p-0;
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  // width: calc(100% - 20px);
+
+  td {
+    vertical-align: middle;
+  }
+}
+
+.pricing-p {
+  min-height: 60px;
+}
+
+.pick {
+  font-size: 14px !important;
+}
+
+// ---------------------------------------------------------
+// Formatting for standard forms
+// ---------------------------------------------------------
+
+form div label {
+  @extend .form-label;
+}
+
+form div input[type=text] {
+  @extend .form-control;
+  @extend .mb-2;  
+}
+
+form div textarea {
+  @extend .form-control;
+  @extend .mb-2;
+}
+
+form div input[type=submit] {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .mt-2;
+}
+
+.form_action_button {
+  display: inline-block;
+}
+
+.form_action_button form{
+  display: inline-block;
+}
+
+.card-body-steps {
+  min-height: 150px;
+}
+
+.custom-popover {
+  --bs-popover-max-width: 60%;
+  --bs-popover-border-color: red;
+  // --bs-popover-header-bg: var(--bd-red-bg);
+  // --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+}
+
+// Chat styling
+
+.chats {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* To prevent flex items from overflowing */
+}
+
+#chat-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* To prevent flex items from overflowing */
+}
+
+#chat-input-container {
+  display: flex;
+  padding: 10px;
+  background-color: $gray-800;
+  border-top: 1px solid $gray-700;
+  align-items: stretch; /* This ensures children stretch to fill the container height */
+  bottom: 0; /* Keeps the input at the bottom of the screen */
+}
+
+body[data-bs-theme="light"] #chat-input-container {
+  background-color: var(--bs-secondary-bg);
+  border-top: 1px solid var(--bs-secondary-border-color);
+}
+
+#chat-message-input {
+  flex-grow: 1;
+  margin-right: 10px;
+  resize: none; /* Prevents manual resizing */
+  height: 4.5em; /* Approximately two lines of text */
+  overflow-y: auto; /* Adds scrollbar if content exceeds two lines */
+}
+
+#chat-send-button {
+  width: 4.5em; /* Make it square, matching the height of the textarea */
+  height: 4.5em;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch; /* This makes the button stretch to fill the container height */
+  border: none;
+}
+
+body[data-bs-theme="light"] #chat-send-button {
+  color: var(--bs-body-color);
+}
+
+#chat-send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#chat-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+#chat-empty-state img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  // border-radius: 50%;
+  // object-fit: cover;
+}
+
+#chat-empty-state h2 {
+  margin-bottom: 20px;
+}
+
+.chat-message {  
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 20px;
+  word-wrap: break-word;
+  display: inline-block; /* Change this from block to inline-block */
+}
+
+.chat-user-message {
+  max-width: 70%;
+  align-self: flex-end;
+  background-color: $gray-800;
+  color: $light;
+  margin-left: auto;
+  padding: 10px 10px 10px 10px; 
+  float: right; /* Add this to align right */
+  clear: both; /* Add this to prevent wrapping issues */
+}
+
+body[data-bs-theme="light"] .chat-user-message {
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-body-color);
+}
+
+.chat-ai-message {
+  @extend .text-body;
+  align-self: flex-start;
+  background-color: transparent;
+  max-width: 90%;
+  margin-right: auto;
+  float: left; /* Add this to align left */
+  clear: both; /* Add this to prevent wrapping issues */
+
+  table {
+    @extend .table;
+    @extend .table-bordered;
+  } 
+
+}
+
+.pin-hover-visible {
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1000;
+}
+
+.position-relative:hover .pin-hover-visible {
+  opacity: 1 !important;
+}
+
+.board-chart-responsive {
+  width: 100%; 
+  min-height: 300px !important;
+  max-height: 400px !important; 
+}
+
+.btn-pin-hover {
+  opacity: 0.40;
+}
+
+.btn-pin-hover:hover {
+  opacity: 1;
+}
+
+.btn-pin-hover:disabled {
+  background-color: $secondary;
+}
+
+body[data-bs-theme="light"] .btn-theme {
+  @extend .btn-dark;
+}
+
+body[data-bs-theme="dark"] .btn-theme {
+  @extend .btn-light;
+}
+
+
+body[data-bs-theme="light"] .btn-outline-theme {
+  @extend .btn-outline-dark;
+}
+
+body[data-bs-theme="dark"] .btn-outline-theme {
+  @extend .btn-outline-light;
+}
+
+.cents {
+  font-size: 0.5em;
+  vertical-align: super;
+}
+
+/* Custom utility classes */
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Features section styles */
+.mt_features {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.mt_feature_icon_container {
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt_bg_warning_soft {
+  background-color: rgba(var(--bs-warning-rgb), 0.1);
+}
+
+.mt_bg_danger_soft {
+  background-color: rgba(var(--bs-danger-rgb), 0.1);
+}
+
+.mt_feature_image_container {
+  position: relative;
+  z-index: 2;
+}
+
+.mt_feature_blur_1 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(to right, rgba(var(--bs-primary-rgb), 0.2), rgba(var(--bs-info-rgb), 0.2));
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.mt_feature_blur_2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(to right, rgba(var(--bs-warning-rgb), 0.2), rgba(var(--bs-danger-rgb), 0.2));
+  filter: blur(40px);
+  z-index: 1;
+}
+
+/* Trusted section */
+.mt_trusted {
+  background-color: var(--bs-light);
+  border-top: 1px solid var(--bs-border-color);
+}
+
+.mt_letter_spacing_1 {
+  letter-spacing: 1px;
+}
+
+.mt_logo_container {
+  height: 48px;
+  width: 120px;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt_stats_container {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* CTA section */
+.mt_cta {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: var(--mt-light-text);
+}
+
+[data-bs-theme="dark"] .mt_cta {
+  background-color: var(--bs-body-bg);
+  color: var(--mt-dark-text);
+}
+
+.mt_cta_gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 0;
+  background: linear-gradient(to bottom right, var(--bs-primary), var(--bs-info));
+}
+
+.mt_cta_blur {
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  opacity: 0.3;
+  filter: blur(5rem);
+  z-index: -1;
+}
+
+.mt_cta .card {
+  background-color: var(--bs-body-bg);
+  border-color: var(--bs-border-color);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-bs-theme="dark"] .mt_cta .card {
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ROI section */
+.mt_roi {
+  background: linear-gradient(to bottom right, #12283a, #2563eb);
+  position: relative;
+  color: white;
+}
+
+/* All text in ROI section should have contrast by default */
+.mt_roi * {
+  color: white;
+}
+
+.mt_roi h2 {
+  color: white !important; /* Ensure title is always white in both modes */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.5); /* Better contrast shadow */
+  font-weight: 700 !important; /* Ensure maximum boldness */
+}
+
+/* Make sure title is visible in light mode specifically */
+[data-bs-theme="light"] .mt_roi h2 {
+  color: white !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.mt_roi_card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+/* Ensure card headings have white text in both modes */
+.mt_roi_card h3 {
+  color: white !important;
+}
+
+/* Override Bootstrap's default card text colors */
+[data-bs-theme="light"] .mt_roi_card h3,
+[data-bs-theme="light"] .mt_roi_card p,
+[data-bs-theme="dark"] .mt_roi_card h3,
+[data-bs-theme="dark"] .mt_roi_card p {
+  color: white !important;
+}
+
+.mt_roi_icon_container {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 64px;
+  height: 64px;
+}
+
+.mt_roi_metric {
+  color: white; /* Make metric values fully opaque white instead of dimmed */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Add subtle glow effect */
+  position: relative;
+  display: inline-block;
+  padding: 0 0.2em;
+}
+
+.mt_roi_metric::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bs-info), var(--bs-primary));
+  border-radius: 2px;
+}
+
+.mt_roi_divider {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.mt_roi_avatar {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.mt_roi_avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Pattern background for trusted section */
+.bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Styles for content generated by Markdown in marketing-page.html */
+.marketing-page-inner-content {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+
+  p, ul, ol, blockquote {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  ul, ol {
+    padding-left: 2rem;
+  }
+
+  li > ul, li > ol {
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
+
+  blockquote {
+    font-style: italic;
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--bs-border-color);
+    color: var(--bs-secondary-color);
+  }
+
+  a {
+    color: var(--bs-primary);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-top-width: 2px; // Make hr a bit more prominent
+  }
+
+  code {
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  pre {
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.05);
+    border: 1px solid var(--bs-border-color);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+    code {
+      background-color: transparent;
+      padding: 0;
+      font-size: inherit;
+    }
+  }
+
+  small {
+    font-size: 0.8rem;
+  }
+
+  /* Bootstrap-like table styling */
+  table {
+    @extend .table; // Includes basic Bootstrap table styling
+    @extend .table-bordered; // Adds borders
+    @extend .table-striped; // Adds zebra-striping
+    margin-bottom: 1.5rem; // Add some space below tables
+
+    th, td {
+      vertical-align: middle;
+    }
+
+    thead th {
+      font-weight: 600;
+      background-color: rgba(var(--bs-emphasis-color-rgb), 0.03);
+    }
+  }
+}
+
+/* Styles for the light hero on marketing-page.html */
+.marketing-page-hero-light {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+  color: var(--mt-light-text); 
+  background-color: var(--mt-light-bg);
+
+  .mt_bg_gradient {
+    opacity: 0.6; 
+  }
+
+  h1 {
+    color: var(--mt-light-text); 
+    text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  p {
+    // Using a slightly less muted color than the general mt_secondary_text for better readability on gradient
+    color: hsl(215.4, 16.3%, 35%); // Darker version of light-muted 
+  }
+}
+
+// Dark mode adjustments for the light hero section
+[data-bs-theme="dark"] .marketing-page-hero-light {
+  color: var(--mt-dark-text);
+  background-color: var(--mt-dark-bg);
+
+  .mt_bg_gradient {
+    // The global dark mode for .mt_bg_gradient should apply automatically.
+    // If specific overrides for this hero's gradient in dark mode are needed, add them here.
+    // opacity: 0.7; // Example: make it slightly more opaque in dark mode if needed
+  }
+
+  h1 {
+    color: var(--mt-dark-text);
+    text-shadow: 0 1px 3px rgba(255,255,255,0.05); // Subtle light shadow for dark mode
+  }
+
+  p {
+    // Using a slightly less muted color for dark mode as well
+    color: hsl(215, 20.2%, 75%); // Lighter version of dark-muted
+  }
+}
+
+/* Utility class for top margin when hero section is not present */
+.mt-header-offset {
+  margin-top: 7rem; // Adjust this value to match your sticky header's height + some breathing room
+}
+
+[data-bs-theme="dark"] .mt_workflow_card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+}
+
+/* Ensure cards are above line in dark mode */
+[data-bs-theme="dark"] .mt_workflow_card {
+  z-index: 10;
+  background-color: var(--bs-body-bg) !important;
+}
+
+/* Card images */
+
+.content-image img {
+  @extend .rounded-3;
+  @extend .img-fluid;
+  @extend .w-100;
+  @extend .shadow-sm;
+}

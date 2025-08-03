@@ -1,0 +1,63 @@
+<section class="mt_roi py-5 py-md-7 bg-gradient-to-br position-relative text-white" style="background: linear-gradient(to bottom right, #12283a, #2563eb);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="display-5 fw-bold mb-4">{{ page.roi.title }}</h2>
+      <p class="lead fs-4 text-white-75 mx-auto" style="max-width: 700px;">
+        Our clients see measurable improvements in efficiency, quality, and team satisfaction.
+      </p>
+    </div>
+    
+    <div class="row g-4">
+      {% for benefit in page.roi.benefits %}
+      <div class="col-md-4">
+        <div class="card border-0 rounded-4 h-100 p-4 position-relative overflow-hidden mt_roi_card">
+          <div class="position-absolute end-0 top-0" style="width: 8rem; height: 8rem; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; transform: translate(30%, -30%);"></div>
+          
+          <div class="card-body position-relative z-2">
+            <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-4 p-3 mt_roi_icon_container">
+              <i class="{{ benefit.icon }} fs-2 text-white"></i>
+            </div>
+            
+            <h3 class="fs-3 fw-semibold mb-3 text-white">{{ benefit.title }}</h3>
+            
+            {% assign metric = "10+ hrs" %}
+            {% if forloop.index == 2 %}
+              {% assign metric = "2x" %}
+            {% elsif forloop.index == 3 %}
+              {% assign metric = "30%" %}
+            {% endif %}
+            
+            <div class="fs-1 fw-bold mb-3 mt_roi_metric">{{ metric }}</div>
+            
+            <p class="mb-4 text-white-75">{{ benefit.description }}</p>
+            
+            <div class="border-top pt-4 mt-2 mt_roi_divider">
+              <div class="d-flex align-items-center gap-3">
+                {% assign avatar_img = "/assets/images/avatar/testimonials/testimonial-1.jpg" %}
+                {% if forloop.index == 2 %}
+                  {% assign avatar_img = "/assets/images/avatar/testimonials/testimonial-2.jpg" %}
+                {% elsif forloop.index == 3 %}
+                  {% assign avatar_img = "/assets/images/avatar/testimonials/testimonial-3.jpg" %}
+                {% endif %}
+                
+                <div class="mt_roi_avatar rounded-circle overflow-hidden">
+                  <img src="{{ avatar_img | relative_url }}" alt="Client Testimonial" class="w-100 h-100 object-fit-cover">
+                </div>
+                
+                {% assign testimonial = "We cut our reporting time in half." %}
+                {% if forloop.index == 2 %}
+                  {% assign testimonial = "New hires are productive in days, not weeks." %}
+                {% elsif forloop.index == 3 %}
+                  {% assign testimonial = "Our strategists can focus on strategy again." %}
+                {% endif %}
+                
+                <div class="fst-italic small text-white-75">"{{ testimonial }}"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section> 

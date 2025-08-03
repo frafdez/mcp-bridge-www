@@ -1,0 +1,12 @@
+{% if page.hero %}
+<div class="pattern-square"></div>
+<section class="container py-lg-8 py-5">
+   <div class="row justify-content-center">
+      <div class="col-md-10 col-12">
+         <div class="text-center position-relative" >
+            <img src="{{ page.hero.image | relative_url }}" class="img-fluid bg-light p-3 rounded-3 border" alt="" data-cue="zoomIn">
+         </div>
+      </div>
+   </div>
+</section>
+{% endif %}

@@ -1,0 +1,66 @@
+---
+layout: marketing-template/default
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ page.title }}",
+  "image": [
+    "{{ page.image | absolute_url }}"
+    ],
+  "datePublished": "{{ page.date | date: "%Y-%m-%dT%H:%M:%S%z" }}",
+  "dateModified": "{{ page.date | date: "%Y-%m-%dT%H:%M:%S%z" }}",
+  "author": [{
+      "@type": "Person",
+      "name": "{{ page.author }}",
+      "url": "https://www.linkedin.com/in/frankfdez"
+  }]
+}
+</script>
+
+<div class="container">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="py-xl-9 py-4">
+      <div class="container">
+        <div class="row">
+          <article class="col-lg-8 offset-lg-2">
+            <h1>{{ page.title }}</h1>
+            <div class="d-flex align-items-center mt-lg-6 mt-4">
+              <div class="me-5">
+                <span class="fs-6">Written by</span>
+                <div class="d-flex align-items-center mt-2">
+                  <img src="{{ site.baseurl }}/assets/images/avatar/author.png" alt="Avatar" width="24" height="24" class="avatar avatar-xs rounded-circle" />
+                  <div class="ms-2">
+                    {{ page.author }}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span class="fs-6">Published on</span>
+                <div class="mt-2 text-body-secondary">
+                  <span class="fs-6">{{ page.date | date: "%B %d, %Y" }}</span>
+                </div>
+              </div>
+            </div>
+            {% if page.image %}
+            <figure class="my-6">
+              <img src="{{ page.image }}" alt="{{ page.title }}" class="rounded-3 img-fluid w-100" data-cue="slideInUp" data-delay="250" />
+            </figure>
+            {% else %}
+            <br/>
+            {% endif %}
+            {{ content }}
+            {% if page.tags %}
+            <p class="post-tags">
+              {% for tag in page.tags %}
+                <span class="badge bg-primary opacity-50">{{ tag }}</span>{% unless forloop.last %} {% endunless %}
+              {% endfor %}
+            </p>
+          {% endif %}
+          </article>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>

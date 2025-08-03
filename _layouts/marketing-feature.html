@@ -1,0 +1,38 @@
+---
+layout: marketing-template/default
+---
+
+{% if page.hero %}
+{% include marketing-template/sections/hero.html %}
+{% endif %}
+
+{% comment %}
+  Framed markdown section with optional heading and subtle gradient background
+{% endcomment %}
+{% if content != "" %}
+<section id="feature-page-content" class="py-7 py-md-8 position-relative overflow-hidden">
+  <div class="mt_bg_gradient position-absolute inset-0 w-100 h-100 top-0" style="opacity: 0.05;"></div>
+  <div class="container position-relative">
+    {% if page.content_title %}
+      <h2 class="display-5 fw-bold text-center mb-5">{{ page.content_title }}</h2>
+    {% endif %}
+    {{ content }}
+  </div>
+</section>
+{% endif %}
+
+{% if page.features %}
+{% include marketing-feature/sections/features.html %}
+{% endif %}
+
+{% if page.faqs %}
+{% include marketing-feature/sections/faqs.html %}
+{% endif %}
+
+{% if page.show_workflow_library != false %}
+{% include marketing-feature/sections/workflow-library.html %}
+{% endif %}
+
+{% if page.cta %}
+{% include marketing-template/sections/cta-simple.html %}
+{% endif %} 

@@ -1,0 +1,102 @@
+<section class="mt_features py-5 py-md-7">
+  <div class="container">
+    <div class="text-center mb-5 pb-3">
+      <div class="badge bg-primary text-white mb-3 py-2 px-4 rounded-pill fw-normal">{{ page.features.tagline }}</div>
+      <h2 class="display-5 fw-bold">{{ page.features.title }}</h2>
+    </div>
+    
+    <div class="row align-items-center mb-7 py-4">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="position-relative">
+          <div class="rounded-4 shadow-lg overflow-hidden border mt_feature_image_container">
+            {% if page.features.items[0].image %}
+              <img src="{{ page.features.items[0].image }}" alt="{{ page.features.items[0].title }}" class="img-fluid w-100" style="height: 350px; object-fit: cover;">
+            {% else %}
+              <div class="bg-light w-100" style="height: 350px; display: flex; align-items: center; justify-content: center;">
+                <span class="text-secondary">Feature Image Placeholder</span>
+              </div>
+            {% endif %}
+          </div>
+          <div class="mt_feature_blur_1 position-absolute start-0 bottom-0" style="transform: translate(-15%, 15%);"></div>
+          <div class="mt_feature_blur_1 position-absolute end-0 top-0" style="transform: translate(15%, -15%);"></div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="row g-5">
+          {% for feature in page.features.items limit:2 %}
+          <div class="col-12">
+            <div class="d-flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="mt_feature_icon_container rounded-3 p-3">
+                  <i class="{{ feature.icon }} fs-3 text-primary"></i>
+                </div>
+              </div>
+              <div>
+                <h3 class="fs-4 fw-semibold mb-3">{{ feature.title }}</h3>
+                <p class="mb-3 opacity-75">{{ feature.description }}</p>
+                {% if feature.url %}
+                <a href="{{ feature.url }}" class="text-decoration-none d-inline-flex align-items-center gap-2 small fw-medium">
+                  Learn more <i class="bi bi-arrow-right"></i>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="row align-items-center pt-5 mt-4">
+      <div class="col-lg-6 order-2 order-lg-1">
+        <div class="row g-5">
+          {% for feature in page.features.items offset:2 %}
+          {% assign index_mod = forloop.index | modulo: 2 %}
+          {% if index_mod == 1 %}
+            {% assign bg_class = "mt_bg_warning_soft" %}
+            {% assign text_class = "text-warning" %}
+          {% else %}
+            {% assign bg_class = "mt_bg_danger_soft" %}
+            {% assign text_class = "text-danger" %}
+          {% endif %}
+          <div class="col-12">
+            <div class="d-flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="rounded-3 p-3 d-flex align-items-center justify-content-center {{ bg_class }}" style="width: 56px; height: 56px;">
+                  <i class="{{ feature.icon }} fs-3 {{ text_class }}"></i>
+                </div>
+              </div>
+              <div>
+                <h3 class="fs-4 fw-semibold mb-3">{{ feature.title }}</h3>
+                <p class="mb-3 opacity-75">{{ feature.description }}</p>
+                {% if feature.url %}
+                <a href="{{ feature.url }}" class="text-decoration-none d-inline-flex align-items-center gap-2 small fw-medium {{ text_class }}">
+                  Learn more <i class="bi bi-arrow-right"></i>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="col-lg-6 mb-5 mb-lg-0 order-1 order-lg-2">
+        <div class="position-relative">
+          <div class="rounded-4 shadow-lg overflow-hidden border mt_feature_image_container">
+            {% if page.features.items[2].image %}
+              <img src="{{ page.features.items[2].image }}" alt="{{ page.features.items[2].title }}" class="img-fluid w-100" style="height: 350px; object-fit: cover;">
+            {% else %}
+              <div class="bg-light w-100" style="height: 350px; display: flex; align-items: center; justify-content: center;">
+                <span class="text-secondary">Feature Image Placeholder</span>
+              </div>
+            {% endif %}
+          </div>
+          <div class="mt_feature_blur_2 position-absolute start-0 bottom-0" style="transform: translate(-15%, 15%);"></div>
+          <div class="mt_feature_blur_2 position-absolute end-0 top-0" style="transform: translate(15%, -15%);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
